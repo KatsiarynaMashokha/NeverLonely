@@ -3,23 +3,22 @@ package com.epicodus.neverlonely;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-import static android.R.layout.simple_list_item_1;
 
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
     @Bind(R.id.events_list_view) ListView mEventsListView;
     @Bind(R.id.events_around_text_view) TextView mEventsAroundTextView;
-
-    private String[] events = {"Friday happy hour", "Metropolitan museum visit", "Bowling at Brooklyn Bowl",
-            "Central park afternoon walk", "Dog Walk in Prospect Pakr", "Skating at Rockfeller Center"};
-    private String[] dates = {"Friday, November 16", "Thursday, November 22", "Tuesday, November 12",
-            "Monday, November 12", "Friday, November 16", "Thursday, November 22"};
+    private ArrayList<Event> events = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +26,31 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        EventsArrayAdapter adapter = new EventsArrayAdapter(this, simple_list_item_1, events, dates);
-        mEventsListView.setAdapter(adapter);
-
         Typeface grandHotelFont = Typeface.createFromAsset(getAssets(), "fonts/grandhotel.ttf");
         mEventsAroundTextView.setTypeface(grandHotelFont);
 
+        final EventsArrayAdapter adapter = new EventsArrayAdapter(this, events);
+        adapter.add(new Event("Friday happy hour", "Friday, November 16"));
+        adapter.add(new Event("Metropolitan museum visit", "Thursday, November 22"));
+        adapter.add(new Event("Bowling at Brooklyn Bowl", "Tuesday, November 12"));
+        adapter.add(new Event("Central park afternoon walk", "Monday, November 12"));
+        adapter.add(new Event("Dog Walk in Prospect Park", "Friday, November 16"));
+        adapter.add(new Event("Skating at Rockfeller Center", "Thursday, November 22"));
+        adapter.add(new Event("Friday happy hour", "Friday, November 16"));
+        adapter.add(new Event("Metropolitan museum visit", "Thursday, November 22"));
+        adapter.add(new Event("Bowling at Brooklyn Bowl", "Tuesday, November 12"));
+        adapter.add(new Event("Central park afternoon walk", "Monday, November 12"));
+        adapter.add(new Event("Dog Walk in Prospect Park", "Friday, November 16"));
+        adapter.add(new Event("Skating at Rockfeller Center", "Thursday, November 22"));
+
+        mEventsListView.setAdapter(adapter);
+        mEventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this, "clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
+
 }
