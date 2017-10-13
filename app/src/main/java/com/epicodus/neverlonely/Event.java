@@ -1,10 +1,12 @@
 package com.epicodus.neverlonely;
 
+import java.io.Serializable;
+
 /**
  * Created by katsiarynamashokha on 10/13/17.
  */
 
-public class Event {
+public class Event implements Serializable {
     private String mTitle;
     private String mDescription;
     private String mDate;
@@ -53,6 +55,10 @@ public class Event {
         return mDescription;
     }
 
+    public int getInitialNumOfAttendees() {
+        return mInitialNumOfAttendees;
+    }
+
     // Setters
     public void setTitle(String title) {
         mTitle = title;
@@ -76,5 +82,9 @@ public class Event {
 
     public void setDescription(String description) {
         mDescription = description;
+    }
+
+    public void setInitialNumOfAttendees(int initialNumOfAttendees) {
+        mInitialNumOfAttendees = initialNumOfAttendees;
     }
 }

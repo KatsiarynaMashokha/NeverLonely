@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="com.epicodus.neverlonely.DetailsActivity">
 
     <TextView
         android:id="@+id/details_title_text_view"
@@ -101,16 +102,26 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="15sp"
-            android:layout_weight="3"
+            android:layout_weight="5"
             android:text="Current/max # of attendees"/>
 
         <TextView
-            android:id="@+id/attendees_text_view"
+            android:id="@+id/max_attendees_text_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="15sp"
             android:layout_weight="1"
-            tools:text="3/2"/>
+            tools:text="2"/>
+
+        <TextView
+            android:id="@+id/current_attendees_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15sp"
+            android:layout_weight="1"
+            tools:text="3"/>
+
+
     </LinearLayout>
 
     <Button

@@ -1,5 +1,6 @@
 package com.epicodus.neverlonely;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +8,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity{
     @Bind(R.id.events_list_view) ListView mEventsListView;
     @Bind(R.id.events_around_text_view) TextView mEventsAroundTextView;
     private ArrayList<Event> events = new ArrayList<>();
+    private static final String EVENT_KEY = "EVENT";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +50,13 @@ public class MainActivity extends AppCompatActivity{
         mEventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, "clicked", Toast.LENGTH_SHORT).show();
+                Event clickedEvent = (Event) mEventsListView.getItemAtPosition(position);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(EVENT_KEY, clickedEvent);
+                Intent detailsIntent = new Intent(MainActivity.this, DetailsActivity.class);
+                detailsIntent.putExtras(bundle);
+                startActivity(detailsIntent);
             }
         });
     }
-
-
 }
