@@ -4,4 +4,5 @@
     <string name="facebook_login">Facebook Login</string>
     <string name="email_login">Email Login</string>
     <string name="events_around_you">Events around you</string>
+    <string name="join">Join</string>
 </resources>

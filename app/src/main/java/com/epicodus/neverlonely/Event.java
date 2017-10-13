@@ -6,21 +6,25 @@ package com.epicodus.neverlonely;
 
 public class Event {
     private String mTitle;
+    private String mDescription;
     private String mDate;
     private String mLocation;
-    private String mNumberOfParticipants;
+    private int mMaxNumberOfAttendees;
     private String mOrganizer;
+    private int mInitialNumOfAttendees = 0;
 
     public Event(String title, String date) {
         mTitle = title;
         mDate = date;
+
     }
 
-    public Event(String title, String date, String location, String numberOfParticipants, String organizer) {
+    public Event(String title, String description, String date, String location, int maxNumberOfAttendees, String organizer) {
         mTitle = title;
+        mDescription = description;
         mDate = date;
         mLocation = location;
-        mNumberOfParticipants = numberOfParticipants;
+        mMaxNumberOfAttendees = maxNumberOfAttendees;
         mOrganizer = organizer;
     }
 
@@ -37,12 +41,16 @@ public class Event {
         return mLocation;
     }
 
-    public String getNumberOfParticipants() {
-        return mNumberOfParticipants;
+    public int getMaxNumberOfAttendees() {
+        return mMaxNumberOfAttendees;
     }
 
     public String getOrganizer() {
         return mOrganizer;
+    }
+
+    public String getDescription() {
+        return mDescription;
     }
 
     // Setters
@@ -58,11 +66,15 @@ public class Event {
         mLocation = location;
     }
 
-    public void setNumberOfParticipants(String numberOfParticipants) {
-        mNumberOfParticipants = numberOfParticipants;
+    public void setMaxNumberOfAttendees(int maxNumberOfAttendees) {
+        mMaxNumberOfAttendees = maxNumberOfAttendees;
     }
 
     public void setOrganizer(String organizer) {
         mOrganizer = organizer;
+    }
+
+    public void setDescription(String description) {
+        mDescription = description;
     }
 }

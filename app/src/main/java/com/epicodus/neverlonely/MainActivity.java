@@ -30,8 +30,10 @@ public class MainActivity extends AppCompatActivity{
         mEventsAroundTextView.setTypeface(grandHotelFont);
 
         final EventsArrayAdapter adapter = new EventsArrayAdapter(this, events);
-        adapter.add(new Event("Friday happy hour", "Friday, November 16"));
-        adapter.add(new Event("Metropolitan museum visit", "Thursday, November 22"));
+        adapter.add(new Event("Friday happy hour", "Want to go for a happy hour to some bar in Greenwich Village",
+                "Friday, November 16",  "Greenwich Village", 5, "Andy Lee"));
+        adapter.add(new Event("Metropolitan museum visit", "There is a new exposition going on in a Brooklym museum. " +
+                "Would love to visit it",  "Thursday, November 22", "Brooklyn Museum", 3, "Kim Brown"));
         adapter.add(new Event("Bowling at Brooklyn Bowl", "Tuesday, November 12"));
         adapter.add(new Event("Central park afternoon walk", "Monday, November 12"));
         adapter.add(new Event("Dog Walk in Prospect Park", "Friday, November 16"));
