@@ -13,7 +13,7 @@ public class Event implements Serializable {
     private String mLocation;
     private int mMaxNumberOfAttendees;
     private String mOrganizer;
-    private int mInitialNumOfAttendees = 0;
+    private int mCurrentNumOfAttendees = 0;
 
     public Event(String title, String date) {
         mTitle = title;
@@ -55,8 +55,8 @@ public class Event implements Serializable {
         return mDescription;
     }
 
-    public int getInitialNumOfAttendees() {
-        return mInitialNumOfAttendees;
+    public int getCurrentNumOfAttendees() {
+        return mCurrentNumOfAttendees;
     }
 
     // Setters
@@ -84,7 +84,7 @@ public class Event implements Serializable {
         mDescription = description;
     }
 
-    public void setInitialNumOfAttendees(int initialNumOfAttendees) {
-        mInitialNumOfAttendees = initialNumOfAttendees;
+    public void setCurrentNumOfAttendees(int currentNumOfAttendees) {
+        mCurrentNumOfAttendees = currentNumOfAttendees;
     }
 }
