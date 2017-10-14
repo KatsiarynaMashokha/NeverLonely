@@ -1,26 +1,32 @@
 package com.epicodus.neverlonely;
 
+import java.io.Serializable;
+
 /**
  * Created by katsiarynamashokha on 10/13/17.
  */
 
-public class Event {
+public class Event implements Serializable {
     private String mTitle;
+    private String mDescription;
     private String mDate;
     private String mLocation;
-    private String mNumberOfParticipants;
+    private int mMaxNumberOfAttendees;
     private String mOrganizer;
+    private int mCurrentNumOfAttendees = 0;
 
     public Event(String title, String date) {
         mTitle = title;
         mDate = date;
+
     }
 
-    public Event(String title, String date, String location, String numberOfParticipants, String organizer) {
+    public Event(String title, String description, String date, String location, int maxNumberOfAttendees, String organizer) {
         mTitle = title;
+        mDescription = description;
         mDate = date;
         mLocation = location;
-        mNumberOfParticipants = numberOfParticipants;
+        mMaxNumberOfAttendees = maxNumberOfAttendees;
         mOrganizer = organizer;
     }
 
@@ -37,12 +43,20 @@ public class Event {
         return mLocation;
     }
 
-    public String getNumberOfParticipants() {
-        return mNumberOfParticipants;
+    public int getMaxNumberOfAttendees() {
+        return mMaxNumberOfAttendees;
     }
 
     public String getOrganizer() {
         return mOrganizer;
+    }
+
+    public String getDescription() {
+        return mDescription;
+    }
+
+    public int getCurrentNumOfAttendees() {
+        return mCurrentNumOfAttendees;
     }
 
     // Setters
@@ -58,11 +72,19 @@ public class Event {
         mLocation = location;
     }
 
-    public void setNumberOfParticipants(String numberOfParticipants) {
-        mNumberOfParticipants = numberOfParticipants;
+    public void setMaxNumberOfAttendees(int maxNumberOfAttendees) {
+        mMaxNumberOfAttendees = maxNumberOfAttendees;
     }
 
     public void setOrganizer(String organizer) {
         mOrganizer = organizer;
+    }
+
+    public void setDescription(String description) {
+        mDescription = description;
+    }
+
+    public void setCurrentNumOfAttendees(int currentNumOfAttendees) {
+        mCurrentNumOfAttendees = currentNumOfAttendees;
     }
 }

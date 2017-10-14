@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.epicodus.neverlonely.DetailsActivity">
+
+    <TextView
+        android:id="@+id/details_title_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#FFFFFF"
+        tools:text="Thursday afternoon Central Park walk"/>
+
+    <TextView
+        android:id="@+id/author_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/details_title_text_view"
+        android:layout_centerHorizontal="true"
+        tools:text="by Andy Lee"/>
+
+    <TextView
+        android:id="@+id/details_description_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/author_text_view"
+        android:layout_margin="30dp"
+        tools:text="Hi folks, I am planning to go  It was
+        popularised in the 1960s with the release of
+        Letraset sheets containing Lorem Ipsum passages,
+        and more recently with desktop publishing software
+        like Aldus PageMaker including versions of Lorem Ipsu"/>
+
+    <LinearLayout
+        android:id="@+id/date_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/details_description_text_view"
+        android:layout_margin="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/label_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15sp"
+            android:layout_weight="1"
+            android:text="Date: "/>
+
+        <TextView
+            android:id="@+id/date_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15sp"
+            android:layout_weight="4"
+            tools:text="November 16, 2017 @ 12:00 pm."/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/location_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/date_linear_layout"
+        android:layout_margin="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/location_label_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15sp"
+            android:layout_weight="1"
+            android:text="Location: "/>
+
+        <TextView
+            android:id="@+id/location_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15sp"
+            android:layout_weight="4"
+            tools:text="Central Park East 90th Street entrance"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/attendees_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/location_linear_layout"
+        android:layout_margin="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/attendees_label_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15sp"
+            android:layout_weight="5"
+            android:text="Current/max # of attendees"/>
+
+        <TextView
+            android:id="@+id/max_attendees_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15sp"
+            android:layout_weight="1"
+            tools:text="2"/>
+
+        <TextView
+            android:id="@+id/current_attendees_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15sp"
+            android:layout_weight="1"
+            tools:text="3"/>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/join_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/attendees_linear_layout"
+        android:layout_centerHorizontal="true"
+        android:text="@string/join"/>
+
+</RelativeLayout>
