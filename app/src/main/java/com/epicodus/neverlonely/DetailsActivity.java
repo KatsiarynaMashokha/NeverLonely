@@ -20,6 +20,8 @@ public class DetailsActivity extends AppCompatActivity {
     @Bind(R.id.current_attendees_text_view) TextView mCurrentAttendeesTextView;
     @Bind(R.id.join_button) Button mJoinButton;
 
+    private Event clickedEvent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +29,7 @@ public class DetailsActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         Bundle bundle = getIntent().getExtras();
-        final Event clickedEvent = (Event) bundle.getSerializable(EVENT_KEY);
+        clickedEvent = (Event) bundle.getSerializable(EVENT_KEY);
         String title = clickedEvent.getTitle();
         String description = clickedEvent.getDescription();
         String organizer = clickedEvent.getOrganizer();
@@ -38,7 +40,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         mDetailsTitleTextView.setText(title);
         mDetailsDescriptionTextView.setText(description);
-        mAuthorTextView.setText(organizer);
+        mAuthorTextView.setText("by " + organizer);
         mDetailsDescriptionTextView.setText(description);
         mDateTextView.setText(date);
         mLocationTextView.setText(location);
@@ -47,8 +49,8 @@ public class DetailsActivity extends AppCompatActivity {
         mJoinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               int curAttendees = clickedEvent.getCurrentNumOfAttendees();
-                clickedEvent.setCurrentNumOfAttendees(++curAttendees);
+                clickedEvent.addNewAttendee();
+                mCurrentAttendeesTextView.setText(String.valueOf(clickedEvent.getCurrentNumOfAttendees()));
             }
         });
     }

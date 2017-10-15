@@ -10,6 +10,7 @@ public class Event implements Serializable {
     private String mTitle;
     private String mDescription;
     private String mDate;
+    private String mTime;
     private String mLocation;
     private int mMaxNumberOfAttendees;
     private String mOrganizer;
@@ -18,13 +19,13 @@ public class Event implements Serializable {
     public Event(String title, String date) {
         mTitle = title;
         mDate = date;
-
     }
 
-    public Event(String title, String description, String date, String location, int maxNumberOfAttendees, String organizer) {
+    public Event(String title, String description, String date, String time, String location, int maxNumberOfAttendees, String organizer) {
         mTitle = title;
         mDescription = description;
         mDate = date;
+        mTime = time;
         mLocation = location;
         mMaxNumberOfAttendees = maxNumberOfAttendees;
         mOrganizer = organizer;
@@ -37,6 +38,10 @@ public class Event implements Serializable {
 
     public String getDate() {
         return mDate;
+    }
+
+    public String getTime() {
+        return mTime;
     }
 
     public String getLocation() {
@@ -68,6 +73,10 @@ public class Event implements Serializable {
         mDate = date;
     }
 
+    public void setTime(String time) {
+        mTime = time;
+    }
+
     public void setLocation(String location) {
         mLocation = location;
     }
@@ -87,4 +96,9 @@ public class Event implements Serializable {
     public void setCurrentNumOfAttendees(int currentNumOfAttendees) {
         mCurrentNumOfAttendees = currentNumOfAttendees;
     }
+
+    public void addNewAttendee() {
+        mCurrentNumOfAttendees++;
+    }
+
 }
