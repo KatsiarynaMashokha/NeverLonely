@@ -3,6 +3,7 @@ package com.epicodus.neverlonely;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,6 +19,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity{
     @Bind(R.id.events_list_view) ListView mEventsListView;
     @Bind(R.id.events_around_text_view) TextView mEventsAroundTextView;
+    @Bind(R.id.add_fab) FloatingActionButton mAddFabButton;
     private ArrayList<Event> events = new ArrayList<>();
     private static final String EVENT_KEY = "EVENT";
 
@@ -56,6 +58,14 @@ public class MainActivity extends AppCompatActivity{
                 Intent detailsIntent = new Intent(MainActivity.this, DetailsActivity.class);
                 detailsIntent.putExtras(bundle);
                 startActivity(detailsIntent);
+            }
+        });
+
+        mAddFabButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newEventIntent = new Intent(MainActivity.this, NewEventActivity.class);
+                startActivity(newEventIntent);
             }
         });
     }

@@ -87,4 +87,9 @@ public class Event implements Serializable {
     public void setCurrentNumOfAttendees(int currentNumOfAttendees) {
         mCurrentNumOfAttendees = currentNumOfAttendees;
     }
+
+    public void addNewAttendee() {
+        mCurrentNumOfAttendees++;
+    }
+
 }
