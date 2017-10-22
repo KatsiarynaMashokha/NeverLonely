@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.List;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -25,7 +27,6 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_new_event);
         ButterKnife.bind(this);
         mMaxAttendeesEditText.setInputType(InputType.TYPE_CLASS_NUMBER);
-
         mSaveButton.setOnClickListener(this);
     }
 
@@ -44,6 +45,10 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
         int attendees = Integer.parseInt(mMaxAttendeesEditText.getText().toString());
         mMaxAttendeesEditText.getText().clear();
         Event newEvent =  new Event(title, description, date, time, location, attendees, "null");
-        //EventsCart.add(newEvent);
+        EventsCart.get(this).addNewEvent(newEvent);
+        List<Event> events = EventsCart.get(this).getEvents();
+        for(Event e : events) {
+            System.out.println(e.getTitle());
+        }
     }
 }

@@ -104,4 +104,11 @@ public class EventListFragment extends Fragment {
             return mEvents.size();
         }
     }
+
+    // update RecyclerView when a new item got added
+    @Override
+    public void onResume() {
+        super.onResume();
+        mAdapter.notifyDataSetChanged();
+    }
 }
