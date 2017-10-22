@@ -30,7 +30,7 @@ public class EventListFragment extends Fragment {
         TextView mHeaderTextView = view.findViewById(R.id.events_around_text_view);
         Typeface grandHotelFont =  Typeface.createFromAsset(getActivity().getAssets(), "fonts/grandhotel.ttf");
         mHeaderTextView.setTypeface(grandHotelFont);
-        FloatingActionButton mAddFab = view.findViewById(R.id.add_fab);
+        final FloatingActionButton mAddFab = view.findViewById(R.id.add_fab);
         mAddFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,6 +38,19 @@ public class EventListFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        // Hide mAddFab when scrolling down
+        mEventRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if(dy > 0) {
+                    mAddFab.hide();
+                } else if(dy < 0) {
+                    mAddFab.show();
+                }
+            }
+        });
+
         updateUI();
         return view;
     }
@@ -58,10 +71,8 @@ public class EventListFragment extends Fragment {
         public EventHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_event, parent, false));
 
-
             mTitleTextView = itemView.findViewById(R.id.title_text_view);
             mDateTextView = itemView.findViewById(R.id.date_text_view);
-
             itemView.setOnClickListener(this);
         }
 
