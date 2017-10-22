@@ -19,6 +19,7 @@ import butterknife.ButterKnife;
 
 public class EventFragment extends Fragment {
     private Event mEvent;
+    private static final String EVENT_ID = "event_id";
     @Bind(R.id.details_title_text_view) TextView mDetailsTitleTextView;
     @Bind(R.id.author_text_view) TextView mAuthorTextView;
     @Bind(R.id.details_description_text_view) TextView mDetailsDescriptionTextView;
@@ -28,11 +29,19 @@ public class EventFragment extends Fragment {
     @Bind(R.id.current_attendees_text_view) TextView mCurrentAttendeesTextView;
     @Bind(R.id.join_button) Button mJoinButton;
 
+    // Creates fragment instance and bundles up and sets its arguments. When EventActivity needs an instance, it can call this method.
+    public static EventFragment newInstance(UUID eventId) {
+        Bundle args = new Bundle();
+        args.putSerializable(EVENT_ID, eventId);
+        EventFragment fragment = new EventFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        UUID eventId = (UUID) getActivity().getIntent()
-                .getSerializableExtra(EventActivity.EXTRA_EVENT_ID);
+        UUID eventId = (UUID) getArguments().getSerializable(EVENT_ID);
         mEvent = EventsCart.get(getActivity()).getEvent(eventId);
     }
 

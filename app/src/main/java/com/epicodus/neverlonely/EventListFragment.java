@@ -58,9 +58,12 @@ public class EventListFragment extends Fragment {
     private void updateUI() {
         EventsCart eventsCart = EventsCart.get(getActivity());
         List<Event> events = eventsCart.getEvents();
-
-        mAdapter = new EventAdapter(events);
-        mEventRecyclerView.setAdapter(mAdapter);
+        if(mAdapter == null) {
+            mAdapter = new EventAdapter(events);
+            mEventRecyclerView.setAdapter(mAdapter);
+        } else {
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
     private class EventHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -79,7 +82,7 @@ public class EventListFragment extends Fragment {
         @Override
         public void onClick(View v) {
             if (v == itemView) {
-                Intent intent = EventActivity.newIntent(getActivity(), mEvent.getId());
+                Intent intent = EventPagerActivity.newIntent(getActivity(), mEvent.getId());
                 startActivity(intent);
             }
         }
@@ -120,6 +123,6 @@ public class EventListFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        mAdapter.notifyDataSetChanged();
+        updateUI();
     }
 }
