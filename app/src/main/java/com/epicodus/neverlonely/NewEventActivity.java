@@ -10,8 +10,6 @@ import android.widget.EditText;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-import static com.epicodus.neverlonely.MainActivity.events;
-
 public class NewEventActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.save_button) Button mSaveButton;
     @Bind(R.id.title_edit_text) EditText mTitleEditText;
@@ -46,6 +44,6 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
         int attendees = Integer.parseInt(mMaxAttendeesEditText.getText().toString());
         mMaxAttendeesEditText.getText().clear();
         Event newEvent =  new Event(title, description, date, time, location, attendees, "null");
-        events.add(newEvent);
+        //EventsCart.add(newEvent);
     }
 }
