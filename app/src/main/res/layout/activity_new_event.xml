@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="16dp"
     android:orientation="vertical"
     tools:context="com.epicodus.neverlonely.NewEventActivity">
 
@@ -26,8 +27,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="Create event"
             android:gravity="center"
+            android:text="Create event"
             android:textSize="20sp"/>
 
         <Button
@@ -39,124 +40,52 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <EditText
+        android:id="@+id/title_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="horizontal">
+        android:drawableLeft="@drawable/ic_title_black_24dp"
+        android:drawablePadding="5dp"
+        android:hint="Event Title"/>
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/ic_title_black_24dp"/>
-
-        <EditText
-            android:id="@+id/title_edit_text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:hint="Event Title"/>
-    </LinearLayout>
-
-    <LinearLayout
+    <EditText
+        android:id="@+id/description_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="horizontal">
+        android:drawableLeft="@drawable/ic_description_black_24dp"
+        android:drawablePadding="5dp"
+        android:hint="Description"/>
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/ic_description_black_24dp"/>
-
-        <EditText
-            android:id="@+id/description_edit_text"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:hint="Description"/>
-    </LinearLayout>
-
-    <LinearLayout
+    <EditText
+        android:id="@+id/date_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="horizontal">
+        android:drawableLeft="@drawable/ic_date_range_black_24dp"
+        android:drawablePadding="5dp"
+        android:hint="Date"/>
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/ic_date_range_black_24dp"/>
-
-        <EditText
-            android:id="@+id/date_edit_text"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:hint="Date"/>
-    </LinearLayout>
-
-    <LinearLayout
+    <EditText
+        android:id="@+id/time_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="horizontal">
+        android:drawableLeft="@drawable/ic_access_time_black_24dp"
+        android:drawablePadding="5dp"
+        android:hint="Time"/>
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/ic_access_time_black_24dp"/>
-
-        <EditText
-            android:id="@+id/time_edit_text"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:hint="Time"/>
-    </LinearLayout>
-
-    <LinearLayout
+    <EditText
+        android:id="@+id/location_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="horizontal">
+        android:drawableLeft="@drawable/ic_location_on_black_24dp"
+        android:drawablePadding="5dp"
+        android:hint="Location"/>
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/ic_location_on_black_24dp"/>
-
-        <EditText
-            android:id="@+id/location_edit_text"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:hint="Location"/>
-    </LinearLayout>
-
-    <LinearLayout
+    <EditText
+        android:id="@+id/max_attendees_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/ic_people_black_24dp"/>
-
-        <EditText
-            android:id="@+id/max_attendees_edit_text"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:hint="Max number of attendees"/>
-    </LinearLayout>
+        android:drawableLeft="@drawable/ic_people_black_24dp"
+        android:drawablePadding="5dp"
+        android:hint="Max number of attendees"/>
 
 </LinearLayout>

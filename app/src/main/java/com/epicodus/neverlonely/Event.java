@@ -1,6 +1,7 @@
 package com.epicodus.neverlonely;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
  * Created by katsiarynamashokha on 10/13/17.
@@ -14,11 +15,15 @@ public class Event implements Serializable {
     private String mLocation;
     private int mMaxNumberOfAttendees;
     private String mOrganizer;
+    private UUID mId;
     private int mCurrentNumOfAttendees = 0;
+
 
     public Event(String title, String date) {
         mTitle = title;
         mDate = date;
+        mId = UUID.randomUUID();
+
     }
 
     public Event(String title, String description, String date, String time, String location, int maxNumberOfAttendees, String organizer) {
@@ -29,6 +34,7 @@ public class Event implements Serializable {
         mLocation = location;
         mMaxNumberOfAttendees = maxNumberOfAttendees;
         mOrganizer = organizer;
+        mId = UUID.randomUUID();
     }
 
     // Getters
@@ -62,6 +68,10 @@ public class Event implements Serializable {
 
     public int getCurrentNumOfAttendees() {
         return mCurrentNumOfAttendees;
+    }
+
+    public UUID getId() {
+        return mId;
     }
 
     // Setters
