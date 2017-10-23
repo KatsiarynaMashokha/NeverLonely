@@ -28,12 +28,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/author_text_view"
-        android:layout_margin="30dp"
+        android:layout_margin="15dp"
         tools:text="Hi folks, I am planning to go  It was
         popularised in the 1960s with the release of
-        Letraset sheets containing Lorem Ipsum passages,
-        and more recently with desktop publishing software
-        like Aldus PageMaker including versions of Lorem Ipsu"/>
+        Letraset sheets containing "/>
 
     <LinearLayout
         android:id="@+id/date_linear_layout"
@@ -86,12 +84,38 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/weather_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/location_linear_layout"
+        android:layout_margin="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/weather_label_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15sp"
+            android:layout_weight="1"
+            android:text="Weather: "/>
+
+        <TextView
+            android:id="@+id/weather_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15sp"
+            android:layout_weight="4"
+            tools:text="17F"/>
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/attendees_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/location_linear_layout"
+        android:layout_below="@id/weather_linear_layout"
         android:layout_margin="15dp"
         android:orientation="horizontal">
 

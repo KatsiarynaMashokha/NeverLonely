@@ -17,6 +17,7 @@ public class Event implements Serializable {
     private String mOrganizer;
     private UUID mId;
     private int mCurrentNumOfAttendees = 0;
+    private String mZip;
 
 
     public Event(String title, String date) {
@@ -35,6 +36,18 @@ public class Event implements Serializable {
         mMaxNumberOfAttendees = maxNumberOfAttendees;
         mOrganizer = organizer;
         mId = UUID.randomUUID();
+    }
+
+    public Event(String title, String description, String date, String time, String location, int maxNumberOfAttendees, String organizer, String zip) {
+        mTitle = title;
+        mDescription = description;
+        mDate = date;
+        mTime = time;
+        mLocation = location;
+        mMaxNumberOfAttendees = maxNumberOfAttendees;
+        mOrganizer = organizer;
+        mId = UUID.randomUUID();
+        mZip = zip;
     }
 
     // Getters
@@ -72,6 +85,10 @@ public class Event implements Serializable {
 
     public UUID getId() {
         return mId;
+    }
+
+    public String getZip() {
+        return mZip;
     }
 
     // Setters
