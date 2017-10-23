@@ -24,6 +24,8 @@
         </activity>
         <activity android:name=".EventPagerActivity">
         </activity>
+        <activity android:name=".DatePickerFragment">
+        </activity>
     </application>
 
 </manifest>

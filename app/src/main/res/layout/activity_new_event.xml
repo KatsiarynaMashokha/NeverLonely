@@ -7,7 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="16dp"
     android:orientation="vertical"
-    tools:context="com.epicodus.neverlonely.NewEventActivity">
+    tools:context="com.epicodus.neverlonely.NewEventFragment">
 
     <LinearLayout
         android:id="@+id/top_menu_linear_layout"
