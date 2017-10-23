@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.Date;
 import java.util.List;
@@ -66,22 +67,31 @@ public class NewEventFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         String title = mTitleEditText.getText().toString();
-        mTitleEditText.getText().clear();
         String description = mDescriptionEditText.getText().toString();
-        mDescriptionEditText.getText().clear();
         String date = mDateEditText.getText().toString();
-        mDateEditText.getText().clear();
         String time = mTimeEditText.getText().toString();
-        mTimeEditText.getText().clear();
         String location = mLocationEditText.getText().toString();
-        mLocationEditText.getText().clear();
-        int attendees = Integer.parseInt(mMaxAttendeesEditText.getText().toString());
-        mMaxAttendeesEditText.getText().clear();
-        Event newEvent =  new Event(title, description, date, time, location, attendees, "null");
+        String attendeesString = mMaxAttendeesEditText.getText().toString();
+
+        if (title.length() < 5 || attendeesString.isEmpty() || date.length() < 8 || time.length() < 10 || location.length() < 15 || description.length() < 25) {
+            Toast.makeText(getActivity(), "Enter more details about the event", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Event newEvent = new Event(title, description, date, time, location, Integer.valueOf(attendeesString), "null");
         EventsCart.get(getActivity()).addNewEvent(newEvent);
+        Toast.makeText(getActivity(), "The event was successfully added!", Toast.LENGTH_SHORT).show();
+        mTitleEditText.getText().clear();
+        mDescriptionEditText.getText().clear();
+        mDateEditText.getText().clear();
+        mTimeEditText.getText().clear();
+        mLocationEditText.getText().clear();
+        mMaxAttendeesEditText.getText().clear();
+        Intent intent = new Intent(getActivity(), EventListActivity.class);
+        startActivity(intent);
+
         // Print all events to console
         List<Event> events = EventsCart.get(getActivity()).getEvents();
-        for(Event e : events) {
+        for (Event e : events) {
             System.out.println(e.getTitle());
         }
     }
