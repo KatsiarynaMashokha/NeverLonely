@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.DatePicker;
@@ -22,7 +23,6 @@ import java.util.GregorianCalendar;
 
 public class DatePickerFragment extends DialogFragment {
     public static final String EXTRA_DATE = "com.epicodus.neverlonely.date";
-    private static final String ARG_DATE = "date";
     private DatePicker mDatePicker;
 
     @NonNull
@@ -45,6 +45,7 @@ public class DatePickerFragment extends DialogFragment {
                                 int month = mDatePicker.getMonth();
                                 int year = mDatePicker.getYear();
                                 Date date = new GregorianCalendar(year, month, day).getTime();
+                                Log.v("date is ", date.toString() );
                                 sendResult(Activity.RESULT_OK, date);
                             }
                         })

@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -25,7 +26,9 @@ import butterknife.ButterKnife;
 
 public class NewEventFragment extends Fragment implements View.OnClickListener{
     private static final String DIALOG_DATE = "DialogDate";
+    private static final String DIALOG_TIME = "DialogTime";
     private static final int REQUEST_DATE = 0;
+    private static final int REQUEST_TIME = 1;
     @Bind(R.id.save_button) Button mSaveButton;
     @Bind(R.id.title_edit_text) EditText mTitleEditText;
     @Bind(R.id.description_edit_text) EditText mDescriptionEditText;
@@ -48,6 +51,15 @@ public class NewEventFragment extends Fragment implements View.OnClickListener{
                 dialog.show(manager, DIALOG_DATE);
             }
         });
+        mTimeEditText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager manager = getFragmentManager();
+                TimePickerFragment dialog = new TimePickerFragment();
+                dialog.setTargetFragment(NewEventFragment.this, REQUEST_TIME);
+                dialog.show(manager, DIALOG_TIME);
+            }
+        });
         mMaxAttendeesEditText.setInputType(InputType.TYPE_CLASS_NUMBER);
         mSaveButton.setOnClickListener(this);
         return view;
@@ -61,7 +73,12 @@ public class NewEventFragment extends Fragment implements View.OnClickListener{
         if(requestCode == REQUEST_DATE) {
             Date date = (Date) data
                     .getSerializableExtra(DatePickerFragment.EXTRA_DATE);
-            mDateEditText.setText(date.toString());
+            mDateEditText.setText(dateConverter(date));
+        }
+        if(requestCode == REQUEST_TIME) {
+            String timeString = data
+                    .getStringExtra(TimePickerFragment.EXTRA_TIME);
+            mTimeEditText.setText(timeString);
         }
     }
 
@@ -75,7 +92,7 @@ public class NewEventFragment extends Fragment implements View.OnClickListener{
         String zip = mZipEditText.getText().toString();
         String attendeesString = mMaxAttendeesEditText.getText().toString();
 
-        if (title.length() < 5 || attendeesString.isEmpty() || date.length() < 8 || time.length() < 10 ||
+        if (title.length() < 5 || attendeesString.isEmpty() || date.length() < 8 || time.length() < 4 ||
                 location.length() < 15 || description.length() < 25 || zip.length() != 5) {
             Toast.makeText(getActivity(), "Enter more details about the event", Toast.LENGTH_SHORT).show();
             return;
@@ -98,5 +115,10 @@ public class NewEventFragment extends Fragment implements View.OnClickListener{
         for (Event e : events) {
             System.out.println(e.getTitle());
         }
+    }
+
+    private String dateConverter(Date date) {
+        SimpleDateFormat df = new SimpleDateFormat("MMMM dd, YYYY");
+        return df.format(date);
     }
 }

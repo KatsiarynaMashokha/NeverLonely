@@ -6,4 +6,5 @@
     <string name="events_around_you">Events around you</string>
     <string name="join">Join</string>
     <string name="date_picker_title">Date of event:</string>
+    <string name="time_picker_title">Time of event:</string>
 </resources>
