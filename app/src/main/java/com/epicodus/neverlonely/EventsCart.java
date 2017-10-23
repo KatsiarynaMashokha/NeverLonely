@@ -24,9 +24,9 @@ public class EventsCart {
     private EventsCart(Context context) {
         mEvents = new ArrayList<>();
         mEvents.add(new Event("Friday happy hour", "Want to go for a happy hour to some bar in Greenwich Village",
-                "Friday, November 16", "5:45pm", "Greenwich Village", 5, "Andy Lee", "97225"));
+                "Friday, November 16", "5:45pm", "2025 Garcia Ave, Mountain View, CA, 94040", 5, "Andy Lee", "97225"));
         mEvents.add(new Event("Metropolitan museum visit", "There is a new exposition going on in a Brooklym museum. " +
-                "Would love to visit it",  "Thursday, November 22", "11:30am", "Brooklyn Museum", 3, "Kim Brown", "94040"));
+                "Would love to visit it",  "Thursday, November 22", "11:30am", "200 Eastern Pkwy, Brooklyn, NY 11238", 3, "Kim Brown", "94040"));
         mEvents.add(new Event("Bowling at Brooklyn Bowl", "Tuesday, November 12"));
         mEvents.add(new Event("Central park afternoon walk", "Monday, November 12"));
         mEvents.add(new Event("Dog Walk in Prospect Park", "Friday, November 16"));

@@ -1,5 +1,7 @@
 package com.epicodus.neverlonely;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -51,7 +53,7 @@ public class EventFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_details, container, false);
         ButterKnife.bind(this, v);
 
@@ -60,6 +62,20 @@ public class EventFragment extends Fragment {
         mDetailsDescriptionTextView.setText(mEvent.getDescription());
         mDateTextView.setText(mEvent.getDate());
         mLocationTextView.setText(mEvent.getLocation());
+        mLocationTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String address = mEvent.getLocation();
+                //TODO: implement address parsing.
+                Uri geolocation =  Uri.parse("geo:0,0?q=1600+Amphitheatre+Parkway%2C+CA");
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(geolocation);
+                if(intent.resolveActivity(getActivity().getPackageManager())!= null) {
+                    startActivity(intent);
+                }
+            }
+        });
+
         mMaxAttendeesTextView.setText(String.valueOf(mEvent.getMaxNumberOfAttendees()));
         mCurrentAttendeesTextView.setText(String.valueOf(mEvent.getCurrentNumOfAttendees()));
         mJoinButton.setOnClickListener(new View.OnClickListener() {
