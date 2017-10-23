@@ -33,6 +33,7 @@ public class NewEventFragment extends Fragment implements View.OnClickListener{
     @Bind(R.id.time_edit_text) EditText mTimeEditText;
     @Bind(R.id.location_edit_text) EditText mLocationEditText;
     @Bind(R.id.max_attendees_edit_text) EditText mMaxAttendeesEditText;
+    @Bind(R.id.zip_edit_text) EditText mZipEditText;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -71,13 +72,15 @@ public class NewEventFragment extends Fragment implements View.OnClickListener{
         String date = mDateEditText.getText().toString();
         String time = mTimeEditText.getText().toString();
         String location = mLocationEditText.getText().toString();
+        String zip = mZipEditText.getText().toString();
         String attendeesString = mMaxAttendeesEditText.getText().toString();
 
-        if (title.length() < 5 || attendeesString.isEmpty() || date.length() < 8 || time.length() < 10 || location.length() < 15 || description.length() < 25) {
+        if (title.length() < 5 || attendeesString.isEmpty() || date.length() < 8 || time.length() < 10 ||
+                location.length() < 15 || description.length() < 25 || zip.length() != 5) {
             Toast.makeText(getActivity(), "Enter more details about the event", Toast.LENGTH_SHORT).show();
             return;
         }
-        Event newEvent = new Event(title, description, date, time, location, Integer.valueOf(attendeesString), "null");
+        Event newEvent = new Event(title, description, date, time, location, Integer.valueOf(attendeesString), "null", zip);
         EventsCart.get(getActivity()).addNewEvent(newEvent);
         Toast.makeText(getActivity(), "The event was successfully added!", Toast.LENGTH_SHORT).show();
         mTitleEditText.getText().clear();
@@ -86,6 +89,7 @@ public class NewEventFragment extends Fragment implements View.OnClickListener{
         mTimeEditText.getText().clear();
         mLocationEditText.getText().clear();
         mMaxAttendeesEditText.getText().clear();
+        mZipEditText.getText().clear();
         Intent intent = new Intent(getActivity(), EventListActivity.class);
         startActivity(intent);
 

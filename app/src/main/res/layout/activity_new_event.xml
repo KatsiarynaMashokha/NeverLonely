@@ -82,6 +82,14 @@
         android:hint="Location"/>
 
     <EditText
+        android:id="@+id/zip_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_location_on_black_24dp"
+        android:drawablePadding="5dp"
+        android:hint="Zip"/>
+
+    <EditText
         android:id="@+id/max_attendees_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -8,10 +8,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.UUID;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 /**
  * Created by katsiarynamashokha on 10/21/17.
@@ -27,6 +31,7 @@ public class EventFragment extends Fragment {
     @Bind(R.id.location_text_view) TextView mLocationTextView;
     @Bind(R.id.max_attendees_text_view) TextView mMaxAttendeesTextView;
     @Bind(R.id.current_attendees_text_view) TextView mCurrentAttendeesTextView;
+    @Bind(R.id.weather_text_view) TextView mWeatherTextView;
     @Bind(R.id.join_button) Button mJoinButton;
 
     // Creates fragment instance and bundles up and sets its arguments. When EventActivity needs an instance, it can call this method.
@@ -64,6 +69,28 @@ public class EventFragment extends Fragment {
                 mCurrentAttendeesTextView.setText(String.valueOf(mEvent.getCurrentNumOfAttendees()));
             }
         });
+        getWeather(mEvent.getZip());
         return v;
+    }
+
+    private void getWeather(String location) {
+        final WeatherService weatherService = new WeatherService();
+        weatherService.findWeather(location, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                final String weather = weatherService.processResult(response);
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mWeatherTextView.setText(weather);
+                    }
+                });
+            }
+        });
     }
 }
