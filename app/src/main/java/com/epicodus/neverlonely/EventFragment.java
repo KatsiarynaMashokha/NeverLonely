@@ -60,7 +60,7 @@ public class EventFragment extends Fragment {
         mDetailsTitleTextView.setText(mEvent.getTitle());
         mAuthorTextView.setText(mEvent.getOrganizer());
         mDetailsDescriptionTextView.setText(mEvent.getDescription());
-        mDateTextView.setText(mEvent.getDate());
+        mDateTextView.setText(mEvent.getDate() + " @ " + mEvent.getTime());
         mLocationTextView.setText(mEvent.getLocation());
         mLocationTextView.setOnClickListener(new View.OnClickListener() {
             @Override
