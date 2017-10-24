@@ -32,8 +32,8 @@ public class NewEventFragment extends Fragment implements View.OnClickListener{
     @Bind(R.id.save_button) Button mSaveButton;
     @Bind(R.id.title_edit_text) EditText mTitleEditText;
     @Bind(R.id.description_edit_text) EditText mDescriptionEditText;
-    @Bind(R.id.date_edit_text) EditText mDateEditText;
-    @Bind(R.id.time_edit_text) EditText mTimeEditText;
+   @Bind(R.id.date_edit_text) Button mDateEditText;
+    @Bind(R.id.time_edit_text) Button mTimeEditText;
     @Bind(R.id.location_edit_text) EditText mLocationEditText;
     @Bind(R.id.max_attendees_edit_text) EditText mMaxAttendeesEditText;
     @Bind(R.id.zip_edit_text) EditText mZipEditText;
@@ -102,8 +102,6 @@ public class NewEventFragment extends Fragment implements View.OnClickListener{
         Toast.makeText(getActivity(), "The event was successfully added!", Toast.LENGTH_SHORT).show();
         mTitleEditText.getText().clear();
         mDescriptionEditText.getText().clear();
-        mDateEditText.getText().clear();
-        mTimeEditText.getText().clear();
         mLocationEditText.getText().clear();
         mMaxAttendeesEditText.getText().clear();
         mZipEditText.getText().clear();

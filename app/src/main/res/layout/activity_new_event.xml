@@ -57,19 +57,21 @@
         android:drawablePadding="5dp"
         android:hint="Description"/>
 
-    <EditText
+    <Button
         android:id="@+id/date_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAlignment="viewStart"
         android:drawableLeft="@drawable/ic_date_range_black_24dp"
         android:drawablePadding="5dp"
         android:hint="Date"/>
 
-    <EditText
+    <Button
         android:id="@+id/time_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_access_time_black_24dp"
+        android:textAlignment="viewStart"
         android:drawablePadding="5dp"
         android:hint="Time"/>
 
