@@ -34,6 +34,7 @@ public class EventListFragment extends Fragment {
         TextView mHeaderTextView = view.findViewById(R.id.events_around_text_view);
         Typeface grandHotelFont =  Typeface.createFromAsset(getActivity().getAssets(), "fonts/grandhotel.ttf");
         mHeaderTextView.setTypeface(grandHotelFont);
+
         final FloatingActionButton mAddFab = view.findViewById(R.id.add_fab);
         mAddFab.setOnClickListener(new View.OnClickListener() {
             @Override
