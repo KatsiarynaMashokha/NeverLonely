@@ -1,9 +1,17 @@
 package com.epicodus.neverlonely;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
+import android.widget.Toast;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * Created by katsiarynamashokha on 10/21/17.
@@ -11,11 +19,13 @@ import android.support.v7.app.AppCompatActivity;
 
 public abstract class SingleFragmentActivity extends AppCompatActivity {
     protected abstract Fragment createFragment();
+    @Bind(R.id.navigation) BottomNavigationView mBottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment);
+        ButterKnife.bind(this);
 
         FragmentManager fm = getSupportFragmentManager();
         Fragment fragment = fm.findFragmentById(R.id.fragment_container);
@@ -25,5 +35,27 @@ public abstract class SingleFragmentActivity extends AppCompatActivity {
                     .add(R.id.fragment_container, fragment)
                     .commit();
         }
+
+        mBottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment selectedFragment = null;
+                switch (item.getItemId()) {
+                    case R.id.menu_search:
+                        Toast.makeText(SingleFragmentActivity.this, "search selected", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.menu_profile:
+                        selectedFragment = ProfileFragment.newInstance();
+                        break;
+                    case R.id.menu_my_events:
+                        Toast.makeText(SingleFragmentActivity.this, "events selected", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, selectedFragment);
+                transaction.commit();
+                return true;
+            }
+        });
     }
 }

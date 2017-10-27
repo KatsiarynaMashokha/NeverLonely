@@ -4,17 +4,19 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-    @Bind(R.id.title_text_view) TextView mTitleTextView;
-    @Bind(R.id.facebook_login_button) Button mFacebookLoginButton;
-    @Bind(R.id.email_login_button) Button mEmailLoginButton;
+public class LoginActivity extends AppCompatActivity {
+    @Bind(R.id.app_name_text_view) TextView mNameTextView;
+    @OnClick(R.id.sign_up_text_view)
+    public void signUp() {
+        startActivity(new Intent(LoginActivity.this, CreateAccountActivity.class));
+        finish();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,17 +24,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-        // Create a font
-        Typeface grandHotelFont = Typeface.createFromAsset(getAssets(), "fonts/grandhotel.ttf");
-        mTitleTextView.setTypeface(grandHotelFont);
-
-        mFacebookLoginButton.setOnClickListener(this);
-        mEmailLoginButton.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-        Intent mainIntent = new Intent(LoginActivity.this, EventListActivity.class);
-        startActivity(mainIntent);
+        mNameTextView.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/grandhotel.ttf"));
     }
 }
