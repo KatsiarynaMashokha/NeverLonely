@@ -1,4 +1,4 @@
-package com.epicodus.neverlonely;
+package com.epicodus.neverlonely.ui;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,6 +9,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import com.epicodus.neverlonely.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

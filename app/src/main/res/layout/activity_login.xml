@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="16dp"
     android:orientation="vertical"
-    tools:context="com.epicodus.neverlonely.LoginActivity">
+    tools:context="com.epicodus.neverlonely.ui.LoginActivity">
 
     <TextView
         android:id="@+id/app_name_text_view"

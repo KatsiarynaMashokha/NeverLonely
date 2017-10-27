@@ -1,4 +1,4 @@
-package com.epicodus.neverlonely;
+package com.epicodus.neverlonely.ui;
 
 import android.support.v4.app.Fragment;
 

@@ -1,4 +1,4 @@
-package com.epicodus.neverlonely;
+package com.epicodus.neverlonely.ui;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,6 +12,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.epicodus.neverlonely.R;
+import com.epicodus.neverlonely.models.Event;
+import com.epicodus.neverlonely.models.EventsCart;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

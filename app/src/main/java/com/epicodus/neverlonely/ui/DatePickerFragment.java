@@ -1,4 +1,4 @@
-package com.epicodus.neverlonely;
+package com.epicodus.neverlonely.ui;
 
 
 import android.app.Activity;
@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.DatePicker;
+
+import com.epicodus.neverlonely.R;
 
 import java.util.Date;
 import java.util.GregorianCalendar;

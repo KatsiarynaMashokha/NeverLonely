@@ -1,4 +1,4 @@
-package com.epicodus.neverlonely;
+package com.epicodus.neverlonely.ui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -11,6 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.epicodus.neverlonely.R;
+import com.epicodus.neverlonely.models.Event;
+import com.epicodus.neverlonely.models.EventsCart;
 
 import java.util.List;
 

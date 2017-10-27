@@ -1,10 +1,12 @@
-package com.epicodus.neverlonely;
+package com.epicodus.neverlonely.ui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+
+import com.epicodus.neverlonely.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

@@ -11,14 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/NoActionBarTheme">
-        <activity android:name=".StartActivity">
+        <activity android:name=".ui.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".NewEventActivity">
+        <activity android:name=".ui.NewEventActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
 
@@ -27,15 +27,15 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name=".EventListActivity">
+        <activity android:name=".ui.EventListActivity">
         </activity>
-        <activity android:name=".EventPagerActivity">
+        <activity android:name=".ui.EventPagerActivity">
         </activity>
-        <activity android:name=".CreateAccountActivity">
+        <activity android:name=".ui.CreateAccountActivity">
         </activity>
-        <activity android:name=".LoginActivity">
+        <activity android:name=".ui.LoginActivity">
         </activity>
-        <activity android:name=".ProfileFragment">
+        <activity android:name=".ui.ProfileFragment">
         </activity>
     </application>
 

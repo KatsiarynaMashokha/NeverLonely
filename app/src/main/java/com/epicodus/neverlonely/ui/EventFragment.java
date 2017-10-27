@@ -1,4 +1,4 @@
-package com.epicodus.neverlonely;
+package com.epicodus.neverlonely.ui;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -9,6 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.epicodus.neverlonely.R;
+import com.epicodus.neverlonely.models.Event;
+import com.epicodus.neverlonely.models.EventsCart;
+import com.epicodus.neverlonely.services.WeatherService;
 
 import java.io.IOException;
 import java.util.UUID;
