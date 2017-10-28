@@ -1,9 +1,11 @@
 package com.epicodus.neverlonely.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +32,8 @@ import okhttp3.Response;
 
 public class EventFragment extends Fragment {
     private Event mEvent;
+    private static final int REQUEST_CONFIRMATION = 0;
+    private static final String DIALOG_CONFIRM = "DialogConfirm";
     private static final String EVENT_ID = "event_id";
     @Bind(R.id.details_title_text_view) TextView mDetailsTitleTextView;
     @Bind(R.id.author_text_view) TextView mAuthorTextView;
@@ -86,8 +90,10 @@ public class EventFragment extends Fragment {
         mJoinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mEvent.addNewAttendee();
-                mCurrentAttendeesTextView.setText(String.valueOf(mEvent.getCurrentNumOfAttendees()));
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                ConfirmationDialogFragment dialogFragment = ConfirmationDialogFragment.newInstance();
+                dialogFragment.setTargetFragment(EventFragment.this, REQUEST_CONFIRMATION);
+                dialogFragment.show(fm, DIALOG_CONFIRM);
             }
         });
         getWeather(mEvent.getZip());
@@ -113,5 +119,14 @@ public class EventFragment extends Fragment {
                 });
             }
         });
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode == Activity.RESULT_OK) {
+            mEvent.addNewAttendee();
+            mCurrentAttendeesTextView.setText(String.valueOf(mEvent.getCurrentNumOfAttendees()));
+        }
     }
 }

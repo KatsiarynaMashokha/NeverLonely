@@ -26,6 +26,16 @@ public class EventListFragment extends Fragment {
     private RecyclerView mEventRecyclerView;
     private EventAdapter mAdapter;
 
+    public static EventListFragment newInstance() {
+        return new EventListFragment();
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
+        super.onCreate(savedInstanceState);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_event_list, container, false);
