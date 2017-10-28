@@ -44,7 +44,7 @@ public abstract class SingleFragmentActivity extends AppCompatActivity {
                 Fragment selectedFragment = null;
                 switch (item.getItemId()) {
                     case R.id.menu_search:
-                        Toast.makeText(SingleFragmentActivity.this, "search selected", Toast.LENGTH_SHORT).show();
+                        selectedFragment = EventListFragment.newInstance();
                         break;
                     case R.id.menu_profile:
                         selectedFragment = ProfileFragment.newInstance();
