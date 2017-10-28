@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "423990255793",
+    "firebase_url": "https://nevr-3c0b0.firebaseio.com",
+    "project_id": "nevr-3c0b0",
+    "storage_bucket": "nevr-3c0b0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:423990255793:android:15002ca7431e13da",
+        "android_client_info": {
+          "package_name": "com.epicodus.neverlonely"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "423990255793-rlqbnr4m3o1nmvsag2eldm9t6fcb2m99.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.epicodus.neverlonely",
+            "certificate_hash": "6d0fd0595bfd5764100f31d447f7ef076a84d580"
+          }
+        },
+        {
+          "client_id": "423990255793-5f85fcqpucrn33mlg4ofveh93rf6n8ca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8pmCTe9ePRX2FRqroRYUjGM4nhNnTRlE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "423990255793-5f85fcqpucrn33mlg4ofveh93rf6n8ca.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,6 @@
-package com.epicodus.neverlonely;
+package com.epicodus.neverlonely.services;
+
+import com.epicodus.neverlonely.Constants;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -1,4 +1,4 @@
-package com.epicodus.neverlonely;
+package com.epicodus.neverlonely.models;
 
 import java.io.Serializable;
 import java.util.UUID;
