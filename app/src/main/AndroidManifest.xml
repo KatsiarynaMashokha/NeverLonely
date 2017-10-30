@@ -35,9 +35,7 @@
         </activity>
         <activity android:name=".ui.LoginActivity">
         </activity>
-        <activity android:name=".ui.ProfileFragment">
-        </activity>
-        <activity android:name=".ui.ConfirmationDialogFragment">
+        <activity android:name=".ui.MyEventsFragment">
         </activity>
     </application>
 

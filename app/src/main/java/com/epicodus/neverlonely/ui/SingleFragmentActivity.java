@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.epicodus.neverlonely.R;
 
@@ -50,7 +49,7 @@ public abstract class SingleFragmentActivity extends AppCompatActivity {
                         selectedFragment = ProfileFragment.newInstance();
                         break;
                     case R.id.menu_my_events:
-                        Toast.makeText(SingleFragmentActivity.this, "events selected", Toast.LENGTH_SHORT).show();
+                        selectedFragment = MyEventsFragment.newInstance();
                         break;
                 }
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

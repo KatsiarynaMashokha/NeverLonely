@@ -97,7 +97,7 @@ public class NewEventFragment extends Fragment implements View.OnClickListener{
         String attendeesString = mMaxAttendeesEditText.getText().toString();
 
         if (title.length() < 5 || attendeesString.isEmpty() || date.length() < 8 || time.length() < 4 ||
-                location.length() < 15 || description.length() < 25 || zip.length() != 5) {
+                location.length() < 10 || description.length() < 10 || zip.length() != 5) {
             Toast.makeText(getActivity(), "Enter more details about the event", Toast.LENGTH_SHORT).show();
             return;
         }

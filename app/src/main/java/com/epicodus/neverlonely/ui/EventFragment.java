@@ -6,16 +6,23 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.epicodus.neverlonely.Constants;
 import com.epicodus.neverlonely.R;
 import com.epicodus.neverlonely.models.Event;
 import com.epicodus.neverlonely.models.EventsCart;
 import com.epicodus.neverlonely.services.WeatherService;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -45,6 +52,9 @@ public class EventFragment extends Fragment {
     @Bind(R.id.weather_text_view) TextView mWeatherTextView;
     @Bind(R.id.join_button) Button mJoinButton;
 
+    private DatabaseReference mJoinedEventReference;
+    private ValueEventListener mEventListener;
+
     // Creates fragment instance and bundles up and sets its arguments. When EventActivity needs an instance, it can call this method.
     public static EventFragment newInstance(UUID eventId) {
         Bundle args = new Bundle();
@@ -59,6 +69,26 @@ public class EventFragment extends Fragment {
         super.onCreate(savedInstanceState);
         UUID eventId = (UUID) getArguments().getSerializable(EVENT_ID);
         mEvent = EventsCart.get(getActivity()).getEvent(eventId);
+
+        mJoinedEventReference = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child(Constants.FIREBASE_CHILD_MY_EVENTS);
+
+        mEventListener = mJoinedEventReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot event : dataSnapshot.getChildren()) {
+                    String title = event.getValue().toString();
+                    Log.d("Events updated", "event : " + title);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -127,6 +157,18 @@ public class EventFragment extends Fragment {
         if(resultCode == Activity.RESULT_OK) {
             mEvent.addNewAttendee();
             mCurrentAttendeesTextView.setText(String.valueOf(mEvent.getCurrentNumOfAttendees()));
+            saveEventToMyEvents(mEvent);
         }
+    }
+
+    private void saveEventToMyEvents(Event event) {
+        mJoinedEventReference.push().setValue(event);
+    }
+
+    // Remove the listener from our Firebase node when the activity is destroyed
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mJoinedEventReference.removeEventListener(mEventListener);
     }
 }

@@ -1,24 +1,30 @@
 package com.epicodus.neverlonely.models;
 
-import java.io.Serializable;
+import org.parceler.Parcel;
+
 import java.util.UUID;
 
 /**
  * Created by katsiarynamashokha on 10/13/17.
  */
 
-public class Event implements Serializable {
-    private String mTitle;
-    private String mDescription;
-    private String mDate;
-    private String mTime;
-    private String mLocation;
-    private int mMaxNumberOfAttendees;
-    private String mOrganizer;
-    private UUID mId;
-    private int mCurrentNumOfAttendees = 0;
-    private String mZip;
+@Parcel
+public class Event{
+    String mTitle;
+    String mDescription;
+    String mDate;
+    String mTime;
+    String mLocation;
+    int mMaxNumberOfAttendees;
+    String mOrganizer;
+    UUID mId;
+    int mCurrentNumOfAttendees = 0;
+    String mZip;
+   // private String pushId;
 
+
+    public Event() {
+    }
 
     public Event(String title, String date) {
         mTitle = title;
@@ -91,6 +97,10 @@ public class Event implements Serializable {
         return mZip;
     }
 
+//    public String getPushId() {
+//        return pushId;
+//    }
+
     // Setters
     public void setTitle(String title) {
         mTitle = title;
@@ -124,8 +134,11 @@ public class Event implements Serializable {
         mCurrentNumOfAttendees = currentNumOfAttendees;
     }
 
+    //public void setPushId(String pushId) {
+      //  this.pushId = pushId;
+   // }
+
     public void addNewAttendee() {
         mCurrentNumOfAttendees++;
     }
-
 }
