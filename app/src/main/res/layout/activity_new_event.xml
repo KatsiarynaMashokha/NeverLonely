@@ -75,13 +75,13 @@
         android:drawablePadding="5dp"
         android:hint="Time"/>
 
-    <EditText
-        android:id="@+id/location_edit_text"
+    <fragment
+        android:id="@+id/place_autocomplete_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_location_on_black_24dp"
-        android:drawablePadding="5dp"
-        android:hint="Location"/>
+        android:textColor="#FFFFFF"
+        android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"/>
 
     <EditText
         android:id="@+id/zip_edit_text"

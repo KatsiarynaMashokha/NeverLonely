@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,10 @@ import android.widget.Toast;
 import com.epicodus.neverlonely.R;
 import com.epicodus.neverlonely.models.Event;
 import com.epicodus.neverlonely.models.EventsCart;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
+import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -33,14 +38,16 @@ public class NewEventFragment extends Fragment implements View.OnClickListener{
     private static final String DIALOG_TIME = "DialogTime";
     private static final int REQUEST_DATE = 0;
     private static final int REQUEST_TIME = 1;
+    public static final String TAG = NewEventFragment.class.getSimpleName();
     @Bind(R.id.save_button) Button mSaveButton;
     @Bind(R.id.title_edit_text) EditText mTitleEditText;
     @Bind(R.id.description_edit_text) EditText mDescriptionEditText;
-   @Bind(R.id.date_edit_text) Button mDateEditText;
+    @Bind(R.id.date_edit_text) Button mDateEditText;
     @Bind(R.id.time_edit_text) Button mTimeEditText;
-    @Bind(R.id.location_edit_text) EditText mLocationEditText;
+    PlaceAutocompleteFragment mPlaceAutocompleteFragment;
     @Bind(R.id.max_attendees_edit_text) EditText mMaxAttendeesEditText;
     @Bind(R.id.zip_edit_text) EditText mZipEditText;
+    String location;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -65,6 +72,29 @@ public class NewEventFragment extends Fragment implements View.OnClickListener{
             }
         });
         mMaxAttendeesEditText.setInputType(InputType.TYPE_CLASS_NUMBER);
+
+        mPlaceAutocompleteFragment = (PlaceAutocompleteFragment) getActivity().getFragmentManager()
+                .findFragmentById(R.id.place_autocomplete_fragment);
+        ((EditText)mPlaceAutocompleteFragment.getView().findViewById(R.id.place_autocomplete_search_input)).setTextColor(-1);
+        ((EditText)mPlaceAutocompleteFragment.getView().findViewById(R.id.place_autocomplete_search_input)).setHint(R.string.location);
+        ((EditText)mPlaceAutocompleteFragment.getView().findViewById(R.id.place_autocomplete_search_input)).setHintTextColor(-1);
+
+
+        mPlaceAutocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(Place place) {
+                Log.i(TAG, "Place: " + place.getName());
+                location = place.getAddress().toString();
+                Log.i(TAG, place.getAddress() + "");
+                Log.i(TAG, place.getLatLng() + "");
+            }
+
+            @Override
+            public void onError(Status status) {
+                Log.i(TAG, "An error occurred: " + status);
+            }
+        });
+
         mSaveButton.setOnClickListener(this);
         return view;
     }
@@ -92,7 +122,6 @@ public class NewEventFragment extends Fragment implements View.OnClickListener{
         String description = mDescriptionEditText.getText().toString();
         String date = mDateEditText.getText().toString();
         String time = mTimeEditText.getText().toString();
-        String location = mLocationEditText.getText().toString();
         String zip = mZipEditText.getText().toString();
         String attendeesString = mMaxAttendeesEditText.getText().toString();
 
@@ -106,7 +135,6 @@ public class NewEventFragment extends Fragment implements View.OnClickListener{
         Toast.makeText(getActivity(), "The event was successfully added!", Toast.LENGTH_SHORT).show();
         mTitleEditText.getText().clear();
         mDescriptionEditText.getText().clear();
-        mLocationEditText.getText().clear();
         mMaxAttendeesEditText.getText().clear();
         mZipEditText.getText().clear();
         Intent intent = new Intent(getActivity(), EventListActivity.class);

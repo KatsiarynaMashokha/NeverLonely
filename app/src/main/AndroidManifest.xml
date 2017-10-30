@@ -35,8 +35,9 @@
         </activity>
         <activity android:name=".ui.LoginActivity">
         </activity>
-        <activity android:name=".ui.MyEventsFragment">
-        </activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBdQQ3iU7omSh0phvauvn5Qf4LCqHjfN10"/>
     </application>
 
 </manifest>

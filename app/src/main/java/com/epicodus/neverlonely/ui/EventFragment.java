@@ -18,6 +18,8 @@ import com.epicodus.neverlonely.R;
 import com.epicodus.neverlonely.models.Event;
 import com.epicodus.neverlonely.models.EventsCart;
 import com.epicodus.neverlonely.services.WeatherService;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,7 +27,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
-import java.util.UUID;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -38,6 +39,7 @@ import okhttp3.Response;
  */
 
 public class EventFragment extends Fragment {
+    public static final String TAG = EventFragment.class.getSimpleName();
     private Event mEvent;
     private static final int REQUEST_CONFIRMATION = 0;
     private static final String DIALOG_CONFIRM = "DialogConfirm";
@@ -56,7 +58,7 @@ public class EventFragment extends Fragment {
     private ValueEventListener mEventListener;
 
     // Creates fragment instance and bundles up and sets its arguments. When EventActivity needs an instance, it can call this method.
-    public static EventFragment newInstance(UUID eventId) {
+    public static EventFragment newInstance(String eventId) {
         Bundle args = new Bundle();
         args.putSerializable(EVENT_ID, eventId);
         EventFragment fragment = new EventFragment();
@@ -67,7 +69,7 @@ public class EventFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        UUID eventId = (UUID) getArguments().getSerializable(EVENT_ID);
+        String eventId = (String) getArguments().getSerializable(EVENT_ID);
         mEvent = EventsCart.get(getActivity()).getEvent(eventId);
 
         mJoinedEventReference = FirebaseDatabase
@@ -105,8 +107,10 @@ public class EventFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String address = mEvent.getLocation();
-                //TODO: implement address parsing.
-                Uri geolocation =  Uri.parse("geo:0,0?q=1600+Amphitheatre+Parkway%2C+CA");
+                String replacedAddress = address.replaceAll("\\s+","+").replaceAll(",","");
+                Log.v(TAG, replacedAddress);
+
+                Uri geolocation =  Uri.parse( "geo:0,0?q=" + replacedAddress);
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(geolocation);
                 if(intent.resolveActivity(getActivity().getPackageManager())!= null) {
@@ -162,7 +166,16 @@ public class EventFragment extends Fragment {
     }
 
     private void saveEventToMyEvents(Event event) {
-        mJoinedEventReference.push().setValue(event);
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = currentUser.getUid();
+
+        DatabaseReference eventsReference = FirebaseDatabase
+                .getInstance()
+                .getReference(Constants.FIREBASE_CHILD_MY_EVENTS)
+                .child(uid);
+
+        DatabaseReference pushReference = eventsReference.push();
+        pushReference.setValue(mEvent);
     }
 
     // Remove the listener from our Firebase node when the activity is destroyed

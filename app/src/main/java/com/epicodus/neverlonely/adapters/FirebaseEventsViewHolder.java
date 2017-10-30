@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.epicodus.neverlonely.Constants;
 import com.epicodus.neverlonely.R;
 import com.epicodus.neverlonely.models.Event;
-import com.epicodus.neverlonely.ui.EventListActivity;
+import com.epicodus.neverlonely.ui.EventPagerActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -54,12 +54,15 @@ public class FirebaseEventsViewHolder extends RecyclerView.ViewHolder
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     events.add(snapshot.getValue(Event.class));
                 }
-
                 int itemPosition = getLayoutPosition();
-                Intent intent = new Intent(mContext, EventListActivity.class);
+                Intent intent = new Intent(mContext, EventPagerActivity.class);
                 intent.putExtra("position", itemPosition + "");
                 intent.putExtra("events", Parcels.wrap(events));
-                mContext.startActivity(intent);
+                Event e = events.get(itemPosition);
+                String id = events.get(itemPosition).getId();
+                Intent intent2 = EventPagerActivity.newIntent(mContext, id);
+                mContext.startActivity(intent2);
+                //mContext.startActivity(intent);
             }
 
             @Override

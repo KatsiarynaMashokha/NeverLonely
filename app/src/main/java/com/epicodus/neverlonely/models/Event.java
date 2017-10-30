@@ -17,43 +17,38 @@ public class Event{
     String mLocation;
     int mMaxNumberOfAttendees;
     String mOrganizer;
-    UUID mId;
+    String mId;
     int mCurrentNumOfAttendees = 0;
     String mZip;
-   // private String pushId;
-
 
     public Event() {
     }
 
-    public Event(String title, String date) {
-        mTitle = title;
-        mDate = date;
-        mId = UUID.randomUUID();
-
+    public Event(String mTitle, String mDescription, String mDate, String mTime, String mLocation, int mMaxNumberOfAttendees,
+                 String mOrganizer, String mZip) {
+        this.mTitle = mTitle;
+        this.mDescription = mDescription;
+        this.mDate = mDate;
+        this.mTime = mTime;
+        this.mLocation = mLocation;
+        this.mMaxNumberOfAttendees = mMaxNumberOfAttendees;
+        this.mOrganizer = mOrganizer;
+        this.mId = UUID.randomUUID().toString();
+        this.mZip = mZip;
     }
 
-    public Event(String title, String description, String date, String time, String location, int maxNumberOfAttendees, String organizer) {
-        mTitle = title;
-        mDescription = description;
-        mDate = date;
-        mTime = time;
-        mLocation = location;
-        mMaxNumberOfAttendees = maxNumberOfAttendees;
-        mOrganizer = organizer;
-        mId = UUID.randomUUID();
-    }
-
-    public Event(String title, String description, String date, String time, String location, int maxNumberOfAttendees, String organizer, String zip) {
-        mTitle = title;
-        mDescription = description;
-        mDate = date;
-        mTime = time;
-        mLocation = location;
-        mMaxNumberOfAttendees = maxNumberOfAttendees;
-        mOrganizer = organizer;
-        mId = UUID.randomUUID();
-        mZip = zip;
+    public Event(String mTitle, String mDescription, String mDate, String mTime, String mLocation, int mMaxNumberOfAttendees,
+                 String mOrganizer, String mId, int mCurrentNumOfAttendees, String mZip) {
+        this.mTitle = mTitle;
+        this.mDescription = mDescription;
+        this.mDate = mDate;
+        this.mTime = mTime;
+        this.mLocation = mLocation;
+        this.mMaxNumberOfAttendees = mMaxNumberOfAttendees;
+        this.mOrganizer = mOrganizer;
+        this.mId = mId;
+        this.mCurrentNumOfAttendees = mCurrentNumOfAttendees;
+        this.mZip = mZip;
     }
 
     // Getters
@@ -89,17 +84,13 @@ public class Event{
         return mCurrentNumOfAttendees;
     }
 
-    public UUID getId() {
+    public String getId() {
         return mId;
     }
 
     public String getZip() {
         return mZip;
     }
-
-//    public String getPushId() {
-//        return pushId;
-//    }
 
     // Setters
     public void setTitle(String title) {
@@ -133,10 +124,6 @@ public class Event{
     public void setCurrentNumOfAttendees(int currentNumOfAttendees) {
         mCurrentNumOfAttendees = currentNumOfAttendees;
     }
-
-    //public void setPushId(String pushId) {
-      //  this.pushId = pushId;
-   // }
 
     public void addNewAttendee() {
         mCurrentNumOfAttendees++;
