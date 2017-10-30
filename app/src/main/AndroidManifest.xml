@@ -37,7 +37,7 @@
         </activity>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBdQQ3iU7omSh0phvauvn5Qf4LCqHjfN10"/>
+            android:value="@string/google_places_api_key"/>
     </application>
 
 </manifest>
