@@ -7,4 +7,5 @@
     <string name="join">Join</string>
     <string name="date_picker_title">Date of event:</string>
     <string name="time_picker_title">Time of event:</string>
+    <string name="location">Location</string>
 </resources>

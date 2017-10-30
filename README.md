@@ -13,6 +13,11 @@ as some other characteristics. Download the app and have some good time!
 
 ## Setup/Installation Requirements
 Download or clone the following project from the gitHub by tapping "Download" or using 'git clone' from the terminal. Then run it on Android studio emulator or on your Android device.
+On order to successfully run the application, you are required to use the following API keys:
+1) Google Places API key (https://developers.google.com/places/web-service/get-api-key). The key needs to be places in AndroidManifest.xml file
+right below the following line: 'android:name="com.google.android.geo.API_KEY"'
+2) Open Weather Map API key (https://openweathermap.org/api). The key need to be placed into build.gradle (Module: app) file
+into the following section  buildTypes.each {it.buildConfigField 'String', 'OPEN_WEATHER_API_KEY', OpenWeatherMapApiKey } instead of OpenWeatherMapApiKey.
 
 ## Support and contact details
 For any concerns or questions email to: katsiarynamashokha@gmail.com

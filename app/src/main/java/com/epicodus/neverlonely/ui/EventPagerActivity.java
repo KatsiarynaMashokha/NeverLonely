@@ -14,7 +14,6 @@ import com.epicodus.neverlonely.models.Event;
 import com.epicodus.neverlonely.models.EventsCart;
 
 import java.util.List;
-import java.util.UUID;
 
 public class EventPagerActivity extends AppCompatActivity {
     private ViewPager mViewPager;
@@ -22,7 +21,7 @@ public class EventPagerActivity extends AppCompatActivity {
     public static final String EXTRA_EVENT_ID =
             "com.epicodus.neverlonely.event_id";
 
-    public static Intent newIntent(Context packageContext, UUID eventId) {
+    public static Intent newIntent(Context packageContext, String eventId) {
         Intent intent = new Intent(packageContext, EventPagerActivity.class);
         intent.putExtra(EXTRA_EVENT_ID, eventId);
         return intent;
@@ -33,7 +32,7 @@ public class EventPagerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_pager);
 
-        UUID eventId = (UUID) getIntent().getSerializableExtra(EXTRA_EVENT_ID);
+        String eventId = (String) getIntent().getSerializableExtra(EXTRA_EVENT_ID);
 
         mViewPager = findViewById(R.id.event_view_pager);
         mEvents = EventsCart.get(this).getEvents();

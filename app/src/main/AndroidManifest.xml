@@ -35,10 +35,9 @@
         </activity>
         <activity android:name=".ui.LoginActivity">
         </activity>
-        <activity android:name=".ui.ProfileFragment">
-        </activity>
-        <activity android:name=".ui.ConfirmationDialogFragment">
-        </activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_places_api_key"/>
     </application>
 
 </manifest>

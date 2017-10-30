@@ -11,4 +11,8 @@ public class Constants {
     public static final String OPEN_WEATHER_UNITS_QUERY_PARAM = "units";
     public static final String OPEN_WEATHER_UNITS_VALUE = "imperial";
     public static final String OPEN_WEATHER_API_ID_QUERY_PARAM = "APPID";
+
+    // Firebase variables
+    public static final String FIREBASE_CHILD_USERS = "users";
+    public static final String FIREBASE_CHILD_MY_EVENTS = "events";
 }

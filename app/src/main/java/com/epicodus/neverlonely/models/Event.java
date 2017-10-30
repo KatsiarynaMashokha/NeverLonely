@@ -1,53 +1,54 @@
 package com.epicodus.neverlonely.models;
 
-import java.io.Serializable;
+import org.parceler.Parcel;
+
 import java.util.UUID;
 
 /**
  * Created by katsiarynamashokha on 10/13/17.
  */
 
-public class Event implements Serializable {
-    private String mTitle;
-    private String mDescription;
-    private String mDate;
-    private String mTime;
-    private String mLocation;
-    private int mMaxNumberOfAttendees;
-    private String mOrganizer;
-    private UUID mId;
-    private int mCurrentNumOfAttendees = 0;
-    private String mZip;
+@Parcel
+public class Event{
+    String mTitle;
+    String mDescription;
+    String mDate;
+    String mTime;
+    String mLocation;
+    int mMaxNumberOfAttendees;
+    String mOrganizer;
+    String mId;
+    int mCurrentNumOfAttendees = 0;
+    String mZip;
 
-
-    public Event(String title, String date) {
-        mTitle = title;
-        mDate = date;
-        mId = UUID.randomUUID();
-
+    public Event() {
     }
 
-    public Event(String title, String description, String date, String time, String location, int maxNumberOfAttendees, String organizer) {
-        mTitle = title;
-        mDescription = description;
-        mDate = date;
-        mTime = time;
-        mLocation = location;
-        mMaxNumberOfAttendees = maxNumberOfAttendees;
-        mOrganizer = organizer;
-        mId = UUID.randomUUID();
+    public Event(String mTitle, String mDescription, String mDate, String mTime, String mLocation, int mMaxNumberOfAttendees,
+                 String mOrganizer, String mZip) {
+        this.mTitle = mTitle;
+        this.mDescription = mDescription;
+        this.mDate = mDate;
+        this.mTime = mTime;
+        this.mLocation = mLocation;
+        this.mMaxNumberOfAttendees = mMaxNumberOfAttendees;
+        this.mOrganizer = mOrganizer;
+        this.mId = UUID.randomUUID().toString();
+        this.mZip = mZip;
     }
 
-    public Event(String title, String description, String date, String time, String location, int maxNumberOfAttendees, String organizer, String zip) {
-        mTitle = title;
-        mDescription = description;
-        mDate = date;
-        mTime = time;
-        mLocation = location;
-        mMaxNumberOfAttendees = maxNumberOfAttendees;
-        mOrganizer = organizer;
-        mId = UUID.randomUUID();
-        mZip = zip;
+    public Event(String mTitle, String mDescription, String mDate, String mTime, String mLocation, int mMaxNumberOfAttendees,
+                 String mOrganizer, String mId, int mCurrentNumOfAttendees, String mZip) {
+        this.mTitle = mTitle;
+        this.mDescription = mDescription;
+        this.mDate = mDate;
+        this.mTime = mTime;
+        this.mLocation = mLocation;
+        this.mMaxNumberOfAttendees = mMaxNumberOfAttendees;
+        this.mOrganizer = mOrganizer;
+        this.mId = mId;
+        this.mCurrentNumOfAttendees = mCurrentNumOfAttendees;
+        this.mZip = mZip;
     }
 
     // Getters
@@ -83,7 +84,7 @@ public class Event implements Serializable {
         return mCurrentNumOfAttendees;
     }
 
-    public UUID getId() {
+    public String getId() {
         return mId;
     }
 
@@ -127,5 +128,4 @@ public class Event implements Serializable {
     public void addNewAttendee() {
         mCurrentNumOfAttendees++;
     }
-
 }
