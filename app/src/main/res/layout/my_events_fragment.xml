@@ -10,7 +10,7 @@
         android:id="@+id/my_events_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="My Events"
+        android:text="@string/my_events"
         android:layout_marginBottom="16dp"
         android:textSize="35sp"
         android:gravity="center_horizontal"/>

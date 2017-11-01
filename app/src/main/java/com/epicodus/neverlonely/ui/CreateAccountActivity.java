@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.epicodus.neverlonely.Constants;
 import com.epicodus.neverlonely.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -52,7 +53,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
         boolean validEmail = isValidEmail(email);
         boolean validName = isValidName(mName);
-        boolean validPassword = isValidPassword(password);
+        boolean validPassword = isValidPassword(password, confirmPassword);
 
         if(!validEmail || !validName || !validPassword) return;
 
@@ -61,10 +62,10 @@ public class CreateAccountActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
-                            Log.d(TAG, "Authentication successful");
+                            Log.d(TAG, getString(R.string.authentication_success));
                             createFirebaseUserProfile(task.getResult().getUser());
                         } else {
-                            Toast.makeText(CreateAccountActivity.this, "Authentication failed.",
+                            Toast.makeText(CreateAccountActivity.this, R.string.authentification_failed,
                                     Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -76,7 +77,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
         ButterKnife.bind(this);
-        mNameTextView.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/grandhotel.ttf"));
+        mNameTextView.setTypeface(Typeface.createFromAsset(getAssets(), Constants.TITLE_FONT_NAME));
 
         mAuth = FirebaseAuth.getInstance();
         createAuthStateListener();
@@ -116,7 +117,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         boolean isGoodEmail =
                 (email != null && Patterns.EMAIL_ADDRESS.matcher(email).matches());
         if(!isGoodEmail) {
-            mNewAccountEmail.setError("Please enter a valid email address");
+            mNewAccountEmail.setError(getString(R.string.enter_valid_email));
             return false;
         }
         return isGoodEmail;
@@ -125,16 +126,19 @@ public class CreateAccountActivity extends AppCompatActivity {
     // Validate username
     private boolean isValidName(String name) {
         if(name.equals("")) {
-            mNewAccountName.setError("Please enter your name");
+            mNewAccountName.setError(getString(R.string.enter_your_name));
             return false;
         }
         return true;
     }
 
     // Validate the password
-    private boolean isValidPassword(String password) {
+    private boolean isValidPassword(String password, String confirmPassword) {
         if(password.length() < 6) {
-            mNewAccountPassword.setError("Please create a password containing at least 6 characters");
+            mNewAccountPassword.setError(getString(R.string.password_at_least_six_char));
+            return false;
+        } else if(!password.equals(confirmPassword)) {
+            mNewAccountConfirmPassword.setError(getString(R.string.passwords_do_not_match));
             return false;
         }
         return true;

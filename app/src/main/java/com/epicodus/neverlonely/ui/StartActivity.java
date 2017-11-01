@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import com.epicodus.neverlonely.Constants;
 import com.epicodus.neverlonely.R;
 
 import butterknife.Bind;
@@ -31,7 +32,7 @@ public class StartActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         // Create a font
-        Typeface grandHotelFont = Typeface.createFromAsset(getAssets(), "fonts/grandhotel.ttf");
+        Typeface grandHotelFont = Typeface.createFromAsset(getAssets(), Constants.TITLE_FONT_NAME);
         mTitleTextView.setTypeface(grandHotelFont);
     }
 }

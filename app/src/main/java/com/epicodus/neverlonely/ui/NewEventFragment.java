@@ -28,6 +28,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by katsiarynamashokha on 10/22/17.
@@ -47,6 +48,10 @@ public class NewEventFragment extends Fragment implements View.OnClickListener{
     PlaceAutocompleteFragment mPlaceAutocompleteFragment;
     @Bind(R.id.max_attendees_edit_text) EditText mMaxAttendeesEditText;
     @Bind(R.id.zip_edit_text) EditText mZipEditText;
+    @OnClick(R.id.exit_button)
+            public void exit() {
+        startActivity(new Intent(NewEventFragment.this.getActivity(), EventListActivity.class));
+    }
     String location;
 
     @Override
@@ -83,10 +88,7 @@ public class NewEventFragment extends Fragment implements View.OnClickListener{
         mPlaceAutocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(Place place) {
-                Log.i(TAG, "Place: " + place.getName());
                 location = place.getAddress().toString();
-                Log.i(TAG, place.getAddress() + "");
-                Log.i(TAG, place.getLatLng() + "");
             }
 
             @Override
@@ -127,12 +129,12 @@ public class NewEventFragment extends Fragment implements View.OnClickListener{
 
         if (title.length() < 5 || attendeesString.isEmpty() || date.length() < 8 || time.length() < 4 ||
                 location.length() < 10 || description.length() < 10 || zip.length() != 5) {
-            Toast.makeText(getActivity(), "Enter more details about the event", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), R.string.enter_more_event_details, Toast.LENGTH_SHORT).show();
             return;
         }
         Event newEvent = new Event(title, description, date, time, location, Integer.valueOf(attendeesString), "null", zip);
         EventsCart.get(getActivity()).addNewEvent(newEvent);
-        Toast.makeText(getActivity(), "The event was successfully added!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), R.string.event_success_added, Toast.LENGTH_SHORT).show();
         mTitleEditText.getText().clear();
         mDescriptionEditText.getText().clear();
         mMaxAttendeesEditText.getText().clear();

@@ -1,8 +1,10 @@
 package com.epicodus.neverlonely.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -10,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.epicodus.neverlonely.Constants;
 import com.epicodus.neverlonely.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,6 +27,10 @@ import butterknife.OnClick;
 public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
+    String email;
+    private String recentlyUsedEmail;
     public static final String TAG = LoginActivity.class.getSimpleName();
     @Bind(R.id.app_name_text_view) TextView mNameTextView;
     @Bind(R.id.login_email_edit_text) EditText mLoginEmailEditText;
@@ -31,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick(R.id.email_login_button)
     public void logInWithPassword() {
-        String email = mLoginEmailEditText.getText().toString().trim();
+        email = mLoginEmailEditText.getText().toString().trim();
         String password = mLoginPasswordEditText.getText().toString().trim();
         if(email.equals("")) {
             mLoginEmailEditText.setError("Please enter email");
@@ -41,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
             mLoginPasswordEditText.setError("Please enter password");
             return;
         }
+        addToSharedPreferences(email);
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -50,6 +58,8 @@ public class LoginActivity extends AppCompatActivity {
                             Log.w(TAG, "signInWithEmail", task.getException());
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
+                        } else {
+                            addToSharedPreferences(email);
                         }
                     }
                 });
@@ -80,7 +90,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
 
-        mNameTextView.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/grandhotel.ttf"));
+        mNameTextView.setTypeface(Typeface.createFromAsset(getAssets(), Constants.TITLE_FONT_NAME));
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mSharedPreferences.edit();
+        recentlyUsedEmail = mSharedPreferences.getString(Constants.PREFERENCE_EMAIL_KEY, null);
+        if(recentlyUsedEmail != null) {
+            mLoginEmailEditText.setText(recentlyUsedEmail);
+        }
     }
 
     @Override
@@ -95,5 +111,11 @@ public class LoginActivity extends AppCompatActivity {
         if(mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
         }
+    }
+
+    private void addToSharedPreferences(String email) {
+        mEditor.putString(Constants.PREFERENCE_EMAIL_KEY, email).apply();
+        Log.v(TAG, "added to shared prefs: " + email);
+        mEditor.commit();
     }
 }

@@ -98,7 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="15sp"
             android:layout_weight="1"
-            android:text="Weather: "/>
+            android:text="@string/weather"/>
 
         <TextView
             android:id="@+id/weather_text_view"
@@ -125,7 +125,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="15sp"
             android:layout_weight="5"
-            android:text="Current/max # of attendees"/>
+            android:text="@string/current_max_of_attendees"/>
 
         <TextView
             android:id="@+id/max_attendees_text_view"

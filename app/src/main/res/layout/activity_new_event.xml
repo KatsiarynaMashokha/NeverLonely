@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="16dp"
     android:orientation="vertical"
     tools:context="com.epicodus.neverlonely.ui.NewEventFragment">
@@ -21,7 +20,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="X"/>
+            android:text="@string/x"/>
 
         <TextView
             android:id="@+id/create_event_text_view"
@@ -29,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:gravity="center"
-            android:text="Create event"
+            android:text="@string/create_event"
             android:textSize="20sp"/>
 
         <Button
@@ -37,7 +36,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Save"/>
+            android:text="@string/save"/>
 
     </LinearLayout>
 
@@ -45,41 +44,41 @@
         android:id="@+id/title_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_title_black_24dp"
+        android:drawableStart="@drawable/ic_title_black_24dp"
         android:drawablePadding="5dp"
-        android:hint="Event Title"/>
+        android:hint="@string/event_title"/>
 
     <EditText
         android:id="@+id/description_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_description_black_24dp"
+        android:drawableStart="@drawable/ic_description_black_24dp"
         android:drawablePadding="5dp"
-        android:hint="Description"/>
+        android:hint="@string/description"/>
 
     <Button
         android:id="@+id/date_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="viewStart"
-        android:drawableLeft="@drawable/ic_date_range_black_24dp"
+        android:drawableStart="@drawable/ic_date_range_black_24dp"
         android:drawablePadding="5dp"
-        android:hint="Date"/>
+        android:hint="@string/date"/>
 
     <Button
         android:id="@+id/time_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_access_time_black_24dp"
+        android:drawableStart="@drawable/ic_access_time_black_24dp"
         android:textAlignment="viewStart"
         android:drawablePadding="5dp"
-        android:hint="Time"/>
+        android:hint="@string/time"/>
 
     <fragment
         android:id="@+id/place_autocomplete_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_location_on_black_24dp"
+        android:drawableStart="@drawable/ic_location_on_black_24dp"
         android:textColor="#FFFFFF"
         android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"/>
 
@@ -87,16 +86,16 @@
         android:id="@+id/zip_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_location_on_black_24dp"
+        android:drawableStart="@drawable/ic_location_on_black_24dp"
         android:drawablePadding="5dp"
-        android:hint="Zip"/>
+        android:hint="@string/zip"/>
 
     <EditText
         android:id="@+id/max_attendees_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_people_black_24dp"
+        android:drawableStart="@drawable/ic_people_black_24dp"
         android:drawablePadding="5dp"
-        android:hint="Max number of attendees"/>
+        android:hint="@string/max_number_of_attendees"/>
 
 </LinearLayout>
