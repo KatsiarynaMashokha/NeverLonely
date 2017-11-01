@@ -56,13 +56,12 @@ public class FirebaseEventsViewHolder extends RecyclerView.ViewHolder
                 }
                 int itemPosition = getLayoutPosition();
                 Intent intent = new Intent(mContext, EventPagerActivity.class);
-                intent.putExtra("position", itemPosition + "");
-                intent.putExtra("events", Parcels.wrap(events));
+                intent.putExtra(Constants.INTENT_EXTRA_POSITION, itemPosition + "");
+                intent.putExtra(Constants.INTENT_EXTRA_EVENTS, Parcels.wrap(events));
                 Event e = events.get(itemPosition);
                 String id = events.get(itemPosition).getId();
                 Intent intent2 = EventPagerActivity.newIntent(mContext, id);
                 mContext.startActivity(intent2);
-                //mContext.startActivity(intent);
             }
 
             @Override

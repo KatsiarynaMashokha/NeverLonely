@@ -10,12 +10,12 @@
         android:id="@+id/title_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Event title"/>
+        android:text="@string/event_title"/>
 
     <TextView
         android:id="@+id/date_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Event Date"/>
+        android:text="@string/event_date"/>
 
 </LinearLayout>

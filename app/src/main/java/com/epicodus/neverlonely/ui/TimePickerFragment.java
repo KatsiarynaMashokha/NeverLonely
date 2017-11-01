@@ -15,6 +15,8 @@ import android.widget.TimePicker;
 
 import com.epicodus.neverlonely.R;
 
+import java.util.Locale;
+
 /**
  * Created by katsiarynamashokha on 10/23/17.
  */
@@ -36,14 +38,14 @@ public class TimePickerFragment extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         int hour, minutes;
-                        if (Build.VERSION.SDK_INT < 23) {
-                            hour = mTimePicker.getCurrentHour();
-                            minutes = mTimePicker.getCurrentMinute();
-                        } else {
+                        if(Build.VERSION.SDK_INT >= 23) {
                             hour = mTimePicker.getHour();
                             minutes = mTimePicker.getMinute();
+                        } else {
+                            hour = mTimePicker.getCurrentHour();
+                            minutes = mTimePicker.getCurrentMinute();
                         }
-                        String timeString = String.format("%d:%d", hour, minutes);
+                        String timeString = String.format(Locale.getDefault(), "%02d:%02d", hour, minutes);
                         sendResult(Activity.RESULT_OK, timeString);
                     }
                 })

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.epicodus.neverlonely.Constants;
 import com.epicodus.neverlonely.R;
 import com.epicodus.neverlonely.models.Event;
 import com.epicodus.neverlonely.models.EventsCart;
@@ -41,7 +42,7 @@ public class EventListFragment extends Fragment {
         mEventRecyclerView = view.findViewById(R.id.event_recycler_view);
         mEventRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         TextView mHeaderTextView = view.findViewById(R.id.events_around_text_view);
-        Typeface grandHotelFont =  Typeface.createFromAsset(getActivity().getAssets(), "fonts/grandhotel.ttf");
+        Typeface grandHotelFont =  Typeface.createFromAsset(getActivity().getAssets(), Constants.TITLE_FONT_NAME);
         mHeaderTextView.setTypeface(grandHotelFont);
 
         final FloatingActionButton mAddFab = view.findViewById(R.id.add_fab);

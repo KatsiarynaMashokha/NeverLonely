@@ -10,7 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/matthewgerrard"/>
+        android:src="@drawable/matthewgerrard"
+        android:contentDescription="@string/background_image"/>
 
     <TextView
         android:id="@+id/title_text_view"
