@@ -164,8 +164,8 @@
     <orderEntry type="library" exported="" name="support-compat-26.0.1" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="rules-0.5" level="project" />
     <orderEntry type="library" exported="" name="constraint-layout-solver-1.0.2" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="robolectric-annotations-3.0" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="javax.inject-1" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="robolectric-annotations-3.0" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-26.0.1" level="project" />
     <orderEntry type="library" exported="" name="support-v4-26.0.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-tasks-license-11.4.2" level="project" />

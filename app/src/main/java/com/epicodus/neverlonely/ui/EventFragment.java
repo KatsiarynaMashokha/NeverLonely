@@ -44,6 +44,7 @@ public class EventFragment extends Fragment {
     private static final int REQUEST_CONFIRMATION = 0;
     private static final String DIALOG_CONFIRM = "DialogConfirm";
     private static final String EVENT_ID = "event_id";
+
     @Bind(R.id.details_title_text_view) TextView mDetailsTitleTextView;
     @Bind(R.id.author_text_view) TextView mAuthorTextView;
     @Bind(R.id.details_description_text_view) TextView mDetailsDescriptionTextView;
@@ -175,7 +176,7 @@ public class EventFragment extends Fragment {
                 .child(uid);
 
         DatabaseReference pushReference = eventsReference.push();
-        pushReference.setValue(mEvent);
+        pushReference.setValue(event);
     }
 
     // Remove the listener from our Firebase node when the activity is destroyed
