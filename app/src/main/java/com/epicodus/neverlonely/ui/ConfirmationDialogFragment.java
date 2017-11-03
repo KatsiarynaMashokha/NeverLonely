@@ -2,6 +2,7 @@ package com.epicodus.neverlonely.ui;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,7 +11,10 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 
+import com.epicodus.neverlonely.R;
+
 public class ConfirmationDialogFragment extends DialogFragment {
+    private static Context mContext;
 
     // Empty constructor required for DialogFragment
     public ConfirmationDialogFragment() {
@@ -35,7 +39,7 @@ public class ConfirmationDialogFragment extends DialogFragment {
         String title = getArguments().getString("title");
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
         alertDialogBuilder.setTitle(title);
-        alertDialogBuilder.setMessage("Click OK to confirm your participation in the event");
+        alertDialogBuilder.setMessage(R.string.confirm_participation_text);
         alertDialogBuilder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

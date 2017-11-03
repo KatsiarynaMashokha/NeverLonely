@@ -44,7 +44,7 @@ public class MyEventsFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.my_events_fragment, container, false);
         ButterKnife.bind(this, v);
-        Typeface grandHotelFont =  Typeface.createFromAsset(getActivity().getAssets(), "fonts/grandhotel.ttf");
+        Typeface grandHotelFont =  Typeface.createFromAsset(getActivity().getAssets(), Constants.TITLE_FONT_NAME);
         mMyEventsTextView.setTypeface(grandHotelFont);
         setUpFirebaseAdapter();
         return v;
