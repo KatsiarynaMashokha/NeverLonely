@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.text.InputType;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -93,7 +92,6 @@ public class NewEventFragment extends Fragment implements View.OnClickListener{
 
             @Override
             public void onError(Status status) {
-                Log.i(TAG, "An error occurred: " + status);
             }
         });
 

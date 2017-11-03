@@ -41,11 +41,11 @@ public class LoginActivity extends AppCompatActivity {
         email = mLoginEmailEditText.getText().toString().trim();
         String password = mLoginPasswordEditText.getText().toString().trim();
         if(email.equals("")) {
-            mLoginEmailEditText.setError("Please enter email");
+            mLoginEmailEditText.setError(getString(R.string.please_enter_email));
             return;
         }
         if(password.equals("")) {
-            mLoginPasswordEditText.setError("Please enter password");
+            mLoginPasswordEditText.setError(getString(R.string.please_enter_password));
             return;
         }
         addToSharedPreferences(email);
@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                         Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
                         if(!task.isSuccessful()) {
                             Log.w(TAG, "signInWithEmail", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
+                            Toast.makeText(LoginActivity.this, R.string.authentification_failed,
                                     Toast.LENGTH_SHORT).show();
                         } else {
                             addToSharedPreferences(email);
@@ -115,7 +115,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private void addToSharedPreferences(String email) {
         mEditor.putString(Constants.PREFERENCE_EMAIL_KEY, email).apply();
-        Log.v(TAG, "added to shared prefs: " + email);
         mEditor.commit();
     }
 }

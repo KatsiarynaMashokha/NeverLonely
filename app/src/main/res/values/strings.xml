@@ -40,4 +40,9 @@
     <string name="event_date">Event Date</string>
     <string name="my_events">My Events</string>
     <string name="background_image">Background Image</string>
+    <string name="please_enter_email">Please enter email</string>
+    <string name="please_enter_password">Please enter password</string>
+    <string name="confirm_participation_text">Click OK to confirm your participation in the event</string>
+    <string name="browse">Browse</string>
+    <string name="my_profile">My Profile</string>
 </resources>

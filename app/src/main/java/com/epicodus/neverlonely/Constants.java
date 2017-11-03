@@ -14,13 +14,12 @@ public class Constants {
     public static final String PREFERENCE_EMAIL_KEY = "email";
 
     // Firebase variables
-    public static final String FIREBASE_CHILD_USERS = "users";
+    public static final String FIREBASE_QUERY_INDEX = "index";
     public static final String FIREBASE_CHILD_MY_EVENTS = "events";
 
     // Intent extras
     public static final String INTENT_EXTRA_POSITION = "position";
     public static final String INTENT_EXTRA_EVENTS = "events";
-
 
     // Font title
     public static final String TITLE_FONT_NAME = "fonts/grandhotel.ttf";
