@@ -52,4 +52,26 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
         mAdapter.onItemDismiss(viewHolder.getAdapterPosition());
     }
+
+    // Triggers the callback in ItemTouchHelperViewHolder which is then sent to our
+    // RestaurantListViewHolder where we will later add animations.
+    @Override
+    public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) {
+        if(actionState != ItemTouchHelper.ACTION_STATE_IDLE) {
+            if (viewHolder instanceof ItemTouchHelperViewHolder) {
+                ItemTouchHelperViewHolder helperViewHolder = (ItemTouchHelperViewHolder) viewHolder;
+                helperViewHolder.onItemSelected();
+            }
+        }
+        super.onSelectedChanged(viewHolder, actionState);
+    }
+
+    @Override
+    public void clearView(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
+        super.clearView(recyclerView, viewHolder);
+        if(viewHolder instanceof ItemTouchHelperViewHolder) {
+            ItemTouchHelperViewHolder helperViewHolder = (ItemTouchHelperViewHolder) viewHolder;
+            helperViewHolder.onItemClear();
+        }
+    }
 }

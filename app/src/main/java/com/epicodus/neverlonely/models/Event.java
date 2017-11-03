@@ -20,7 +20,7 @@ public class Event{
     String id;
     int currentNumOfAttendees = 0;
     String zip;
-    String index;
+    //String index;
 
     public Event() {
     }
@@ -36,26 +36,10 @@ public class Event{
         this.organizer = organizer;
         this.id = UUID.randomUUID().toString();
         this.zip = zip;
-        this.index = "not_specified";
+        //this.index = "not_specified";
     }
 
-//    public Event(String mTitle, String mDescription, String mDate, String mTime, String mLocation, int mMaxNumberOfAttendees,
-//                 String mOrganizer, String mId, int mCurrentNumOfAttendees, String mZip) {
-//        this.mTitle = mTitle;
-//        this.mDescription = mDescription;
-//        this.mDate = mDate;
-//        this.mTime = mTime;
-//        this.mLocation = mLocation;
-//        this.mMaxNumberOfAttendees = mMaxNumberOfAttendees;
-//        this.mOrganizer = mOrganizer;
-//        this.mId = mId;
-//        this.mCurrentNumOfAttendees = mCurrentNumOfAttendees;
-//        this.mZip = mZip;
-//    }
-
     // Getters
-
-
     public String getTitle() {
         return title;
     }
@@ -96,13 +80,11 @@ public class Event{
         return zip;
     }
 
-    public String getIndex() {
-        return index;
-    }
+//    public String getIndex() {
+//        return index;
+//    }
 
     // Setters
-
-
     public void setTitle(String title) {
         this.title = title;
     }
@@ -143,9 +125,9 @@ public class Event{
         this.zip = zip;
     }
 
-    public void setIndex(String index) {
-        this.index = index;
-    }
+//    public void setIndex(String index) {
+//        this.index = index;
+//    }
 
     public void addNewAttendee() {
         currentNumOfAttendees++;

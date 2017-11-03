@@ -10,6 +10,7 @@ import com.epicodus.neverlonely.Constants;
 import com.epicodus.neverlonely.R;
 import com.epicodus.neverlonely.models.Event;
 import com.epicodus.neverlonely.ui.EventPagerActivity;
+import com.epicodus.neverlonely.util.ItemTouchHelperViewHolder;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
  */
 
 public class FirebaseEventsViewHolder extends RecyclerView.ViewHolder
-        implements View.OnClickListener {
+        implements View.OnClickListener, ItemTouchHelperViewHolder {
     View mView;
     Context mContext;
     public TextView titleTextView;
@@ -39,7 +40,6 @@ public class FirebaseEventsViewHolder extends RecyclerView.ViewHolder
     public void bindEvent(Event event) {
         titleTextView = mView.findViewById(R.id.title_text_view);
         TextView dateTextView = mView.findViewById(R.id.date_text_view);
-
         titleTextView.setText(event.getTitle());
         dateTextView.setText(event.getDate());
     }
@@ -58,10 +58,6 @@ public class FirebaseEventsViewHolder extends RecyclerView.ViewHolder
                     events.add(snapshot.getValue(Event.class));
                 }
                 int itemPosition = getLayoutPosition();
-//                Intent intent = new Intent(mContext, EventPagerActivity.class);
-//                intent.putExtra(Constants.INTENT_EXTRA_POSITION, itemPosition + "");
-//                intent.putExtra(Constants.INTENT_EXTRA_EVENTS, Parcels.wrap(events));
-//                Event e = events.get(itemPosition);
                 String id = events.get(itemPosition).getId();
                 Intent intent2 = EventPagerActivity.newIntent(mContext, id);
                 mContext.startActivity(intent2);
@@ -69,8 +65,24 @@ public class FirebaseEventsViewHolder extends RecyclerView.ViewHolder
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
+    }
+
+    @Override
+    public void onItemSelected() {
+        itemView.animate()
+                .alpha(0.7f)
+                .scaleX(0.9f)
+                .scaleY(0.9f)
+                .setDuration(500);
+    }
+
+    @Override
+    public void onItemClear() {
+        itemView.animate()
+                .alpha(1f)
+                .scaleX(1f)
+                .scaleY(1f);
     }
 }

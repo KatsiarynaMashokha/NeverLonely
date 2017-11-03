@@ -2,22 +2,26 @@ package com.epicodus.neverlonely.adapters;
 
 import android.content.Context;
 import android.support.v4.view.MotionEventCompat;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.epicodus.neverlonely.Constants;
 import com.epicodus.neverlonely.models.Event;
 import com.epicodus.neverlonely.util.ItemTouchHelperAdapter;
 import com.epicodus.neverlonely.util.OnStartDragListener;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by katsiarynamashokha on 11/1/17.
@@ -96,14 +100,16 @@ public class FirebaseEventListAdapter extends FirebaseRecyclerAdapter<Event, Fir
     }
 
     private void setIndexInFirebase() {
-        for(Event event : mEvents) {
-            int index = mEvents.indexOf(event);
-            Log.v("index: ", index + "");
-            DatabaseReference ref = getRef(index);
-            Log.v("REF: ", ref + "");
-            event.setIndex(Integer.toString(index));
-            ref.setValue(event);
-        }
+           String userId = FirebaseAuth.getInstance()
+                   .getCurrentUser()
+                   .getUid();
+
+            Map<String, Object> eventsMap = new HashMap<>();
+            eventsMap.put(userId, mEvents);
+
+            FirebaseDatabase.getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_MY_EVENTS)
+                    .updateChildren(eventsMap);
     }
 
     @Override

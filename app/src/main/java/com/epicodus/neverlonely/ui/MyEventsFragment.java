@@ -59,8 +59,6 @@ public class MyEventsFragment extends Fragment
                 .child(uid)
                 .orderByChild(Constants.FIREBASE_QUERY_INDEX);
 
-//        Log.v("QUERY", uid);
-
         mFirebaseAdapter = new FirebaseEventListAdapter
                 (Event.class,
                         R.layout.list_item_event,
